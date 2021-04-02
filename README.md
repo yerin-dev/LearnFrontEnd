@@ -1,10 +1,10 @@
 # LearnJavaScript 
 
 ## 목차
-- [1. 제목1](#제목1)
+- [1. JavaScript this](#javaScript-this)
 - [2. 제목2](#제목2)
 
 ## 내용
 
-### 제목1
+### javaScript this
 ### 제목2
