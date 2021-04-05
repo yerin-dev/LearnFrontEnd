@@ -29,7 +29,7 @@
 - [25. custom hook의 use case, 장점](#25-custom-hook의-use-case-장점)
 - [26. 웹스토리지, 로컬 스토리지, 세션 스토리지, 쿠키](#26-웹스토리지-로컬-스토리지-세션-스토리지-쿠키)
 - [29. Script async, defer](#29-Script-async-defer)
-- [30. "use strict"](#30-use strict)
+- [30. "use strict"](#30-use-strict)
 - [31. number](#31-number)
 - [32. rest 파라미터와 spread 연산자](#32-rest-파라미터와-spread-연산자)
 - [](#)
