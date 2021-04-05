@@ -1,4 +1,4 @@
-# LearnJavaScript 
+# Learn Front-end
 
 ## 목차
 - [1. this](#1-this)
@@ -60,21 +60,21 @@ Person.job => "free"
 화살표 함수에서의 `this`는 언제나 상위 스코프의 `this`를 가리킨다. 이를 `Lexical this`라고 한다.
 
 > 또한 화살표 함수는 `call, apply, bind` 메소드를 사용하여 `this`를 변경할 수 없다.<br/>
-"use strict" 모드에서는 window 객체를 this를 통해 참조할 수 없기 때문에 undefined가 나올 수 있다.
+"use strict" 모드에서는 `window` 객체를 `this`를 통해 참조할 수 없기 때문에 `undefined`가 나올 수 있다.
 
 <br />
 
 ### 2. call, apply, bind
 
-이는 함수에 this를 바인딩 하기 위한 방법이다.
-- call은 this를 바인딩 하면서 두번째 인자를 , 쉼표로 이어서 호출한다.
-- apply는 call과 동일하지만 두번째 인자를 [a,b,c,d] 배열로 호출한다.
-- bind는 함수를 호출하는 것이 아닌 this가 바인딩 된 새로운 함수를 리턴한다.
+이는 함수에 `this`를 바인딩 하기 위한 방법이다.
+- `call`은 `this`를 바인딩 하면서 두번째 인자를 `,` 쉼표로 이어서 호출한다.
+- `apply`는 `call`과 동일하지만 두번째 인자를 `[a,b,c,d]` 배열로 호출한다.
+- `bind`는 함수를 호출하는 것이 아닌 `this`가 바인딩 된 새로운 함수를 리턴한다.
 
 <br/>
 
 ### 3. arrow function
-화살표 함수는 Lexical this를 지원하므로 콜백 함수로 사용하기 편리하다. 
+화살표 함수는 `Lexical this`를 지원하므로 콜백 함수로 사용하기 편리하다. 
 
 <br/>
 
@@ -92,7 +92,7 @@ const people = {
 
 people.whoAmI(); // undefined
 ```
-메소드에 화살표 함수를 쓸 경우에는 window 전역을 가르키는데 그것이 "use strict" 모드에서는 undefined가 뜬다.
+메소드에 화살표 함수를 쓸 경우에는 `window` 전역을 가르키는데 그것이 "use strict" 모드에서는 `undefined`가 뜬다.
 
 > 메소드에 화살표함수로 작성하고 싶을때에는 축약 메소드의 표현을 활용한다.
 
@@ -109,7 +109,7 @@ people.whoAmI(); // "ye-r1"
 
 2. 프로토타입
 
-화살표 함수로 정의된 메소드를 prototype에 할당하는 경우에도 동일한 문제가 발생한다.
+화살표 함수로 정의된 메소드를 `prototype`에 할당하는 경우에도 동일한 문제가 발생한다.
 
 ``` javascript
 const people = {
@@ -124,11 +124,11 @@ people.whoAmI(); // "ye-r1"
 ```
 3. 생성자 함수
 화살표 함수는 생성자 함수로 사용할 수 없다.
-생성자 함수는 prototype 프로퍼티를 가지며 prototype 프로퍼티가 가리키는 프로토타입 객체의 constructor를 사용한다.
-하지만 화살표 함수는 prototype 프로퍼티를 가지고 있지 않다.
+생성자 함수는 `prototype` 프로퍼티를 가지며 `prototype` 프로퍼티가 가리키는 프로토타입 객체의 `constructor`를 사용한다.
+하지만 화살표 함수는 `prototype` 프로퍼티를 가지고 있지 않다.
 
 4. addEventListener의 콜백함수
-addEventListener 함수의 콜백함수를 화살표 함수로 정의하면 this가 상위 컨텍스트인 전역 객체 window를 가리킨다.
+`addEventListener` 함수의 콜백함수를 화살표 함수로 정의하면 `this`가 상위 컨텍스트인 전역 객체 `window`를 가리킨다.
 따라서 일반 함수를 사용하여야 한다.
 
 <br/>
@@ -161,9 +161,44 @@ addEventListener 함수의 콜백함수를 화살표 함수로 정의하면 this
 - `var`는 호이스팅으로 올라가 선언하기 전에도 값을 찍을 수 있다.<br/> 값이 할당되지 않았기 때문에 `undefined`가 뜬다.<br/>
 반면 `let`과 `const`는 호이스팅을 지원하지만 막아두어서 에러가 발생한다.
 
+<br />
+
+### 6. Eslint
+문법적오류나 잠재적 오류까지 찾아내고 오류의 이유를 볼 수 있게 해주는 도구 (ex. `const`의 사용을 `let`으로 제안해주는 것)
+
+<br />
+
+### 7. Prettier
+정해진 규칙대로 코드를 예쁘게 변경해주는 도구 (ex. 들여쓰기나 따옴표) 
+
+<br />
+
+### 8. Webpack
+webpack은 모듈 번들러로 파일 확장자에 맞는 로더에게 위임해 하나로 묶어서 최종 배포용 파일을 만들어준다.
+`<script>` 태그가 여러개 있을 때 순서보장을 맞게 해준다.
+
+<br />
+
+### 9. CORS (Cross-Origin Resourse Sharing)
+도메인 또는 포트가 다른 서버의 자원을 요청하면 발생 하는 문제 
+웹 프론트 측에서 `request header`에 `CORS` 관련 옵션을 넣어주고, 서버에서는 해당 프론트 요청을 허용하면 된다.
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br /><br /><br />
+<br />
+
+
+
+
+
 <Br/>
 <Br/>
 <Br/>
 
 > 참조 링크
 https://poiemaweb.com/es6-arrow-function
+https://sunnykim91.tistory.com/121
