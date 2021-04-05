@@ -55,6 +55,7 @@ Person.job => "free"
 
 > "use strict" 모드에서는 window 객체를  this를 통해 참조할 수 없기 때문에 undefined가 나올 수 있다.
 
+<br />
 
 ### data type
 자바스크립트의 데이터 타입에는 크게 두가지로 나눌 수 있다.
@@ -72,6 +73,8 @@ Person.job => "free"
   `function, array, object`
   
   - 참조형은 용량이 커 데이터가 담긴 주소를 저장하며, 가변값이다.
+
+<br />
   
 ### let, const, var의 차이점
 
