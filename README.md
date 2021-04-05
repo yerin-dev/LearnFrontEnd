@@ -1,12 +1,12 @@
 # LearnJavaScript 
 
 ## 목차
-- [1. JavaScript this](#1-javaScript-this)
+- [1. JavaScript this](#javaScript-this)
 - [2. 제목2](#제목2)
 
 ## 내용
 
-### 1 javaScript this
+### javaScript this
 자바스크립트의 this는 호출하는 방법에 의해 결정이 된다.<br/>
 누가 불렀는지에 따라서 this의 의미가 달라진다.
 
