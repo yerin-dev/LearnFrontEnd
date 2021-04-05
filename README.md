@@ -6,6 +6,7 @@
 - [arrow function](#arrow-function)
 - [arrow function을 사용해서는 안되는 경우](#arrow-function을-사용해서는-안되는-경우)
 - [data type](#data-type)
+- [let, const, var의 차이점](#let-const-var의-차이점)
 
 ## 내용
 
@@ -81,6 +82,7 @@ Person.job => "free"
 ### arrow function
 화살표 함수는 Lexical this를 지원하므로 콜백 함수로 사용하기 편리하다. 
 
+<br/>
 
 ### arrow function을 사용해서는 안되는 경우
 
