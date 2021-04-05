@@ -375,18 +375,18 @@ const formula = compose(
 
 ### 19. ajax, fetch, axios
 `HTML` 페이지 전체가 아닌 일부분만 갱신할 수 있도록 `XMLHTMLRequest` 객체를 서버로부터 요청하는 자바스크립트 비동기 통신방식이다.
-- ajax: Jquery를 사용해야한다, promise 기반이 아니다.
-- fetch: ie를 제외한 대부분의 브라우저에서 IMPORT없는 Web API를 사용 가능, promise를 지원
-- axios: node.js와 브라우저를 위한 비동기통신 라이브러리, fetch와 달리 ie11도 지원, promise를 지원
+- `ajax`: `Jquery`를 사용해야한다, `promise` 기반이 아니다.
+- `fetch`: `ie`를 제외한 대부분의 브라우저에서 `IMPORT`없는 `Web API`를 사용 가능, `promise`를 지원
+- `axios`: `node.js`와 브라우저를 위한 비동기통신 라이브러리, `fetch`와 달리 ie11도 지원, `promise`를 지원
 
 <br/>
 
 ### 20. promise, async await
 `promise`는 비동기 동작 다루기 위한 오브젝트이다.
-- 비동기 데이터를 가지고 성공 - 실패를 제어할 수 있다.then, catch
+- 비동기 데이터를 가지고 성공 - 실패를 제어할 수 있다.
 
 `async await`
-- promise를 쉽게 사용하는 신문법이다.
+- `promise`를 쉽게 사용하는 신문법이다.
 
 <br/>
 
@@ -401,7 +401,7 @@ const formula = compose(
 <br/>
 
 ### 23. React
-spa로 이루어진 프론트앤드 자바스크립트 라이브러리
+`spa`로 이루어진 프론트앤드 자바스크립트 라이브러리
 
 <br/>
 
