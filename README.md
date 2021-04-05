@@ -7,6 +7,17 @@
 - [3-1. arrow function을 사용해서는 안되는 경우](#3-1-arrow-function을-사용해서는-안되는-경우)
 - [4. data type](#4-data-type)
 - [5. let, const, var의 차이점](#5-let-const-var의-차이점)
+- [6. hoisting](#6-hoisting)
+- [7. curring 함수](#7-curring-함수)
+- [8. HOF (High Order Function) 고차함수](#8-HOF-High-Order-Function-고차함수)
+- [9.Eslint](#9-Eslint)
+- [10. Prettier](#10-Prettier)
+- [11. Webpack](#11-Webpack)
+- [12. CORS (Cross-Origin Resourse Sharing)](#12-CORS-Cross-Origin-Resourse-Sharing)
+- [13. Rest API](#13-Rest-API)
+- []()
+- []()
+- []()
 
 ## 내용
 
@@ -161,27 +172,147 @@ people.whoAmI(); // "ye-r1"
 - `var`는 호이스팅으로 올라가 선언하기 전에도 값을 찍을 수 있다.<br/> 값이 할당되지 않았기 때문에 `undefined`가 뜬다.<br/>
 반면 `let`과 `const`는 호이스팅을 지원하지만 막아두어서 에러가 발생한다.
 
+### 6. hoisting
+데이터를 선언하기 전에 호출했을때 아래에 있는 선언부분이 최상단으로 올라가지는 현상이다.
+함수 선언은 함수 몸체가 `hoisting` 되는 반면에, 변수 선언 상태로 작성된 함수는 변수 선언만 `hoisting` 된다.
+
+### 7. curring 함수
+커링 함수의 인자로 함수를 전달하면 기능이 추가된 새 함수로 반환할 수 있다.
+객체형 프로그래밍의 `extend` 상속기능 처럼 함수형 언어에서도 사용할 수 있도록 도와주는 함수이다.
+
+``` javascript
+//기존방법
+function multiply(a, b) {
+  return a * b;
+}
+
+function multiplyTwo(a) {
+  return multiply(2, a);
+}
+
+multiplyTwo(4);
+```
+
+``` javascript
+//커링함수
+function multiply(a, b) {
+  return a * b;
+}
+function multiplyX(x) {
+  return function(a) {
+    return multiply(a, x);
+  }
+}
+
+multiplyX(2)(3);
+
+or
+
+const multiplyTwo = multiplyX(2);
+multiplyTwo(3);
+
+```
+
+`const formula = x => addFour(multiplyThree(multiplyTwo(x)));`<br/>
+이렇게 사용하게 되면 우리가 생각하는 실행방향은 -> 지만
+사실상 함수가 실행하는 순서는 <- 거꾸로 실행되는 것이 헷갈릴 수 있다.
+
+이 함수의 실행 순서를 -> 처럼 바꾸기 위해서는 reduce 함수를 사용할 수 있다.
+
+``` javascript
+const formula = [
+  multiplyTwo,
+  multiplyThree,
+  addFour
+].reduce(function(prev, next) {
+  return function(x) {
+    return next(prev(x));
+  }
+}, k => k);
+
+```
+
+이것을 더 간결하게 사용하면 이렇게 작성하면 된다.
+
+
+``` javascript
+function compose(...arg) {
+  return args.reduce(function(prev, next) {
+    return function(...values) {
+      return next(prev(...values));
+    }
+  }, k => k);
+}
+
+const formula = compose(
+  multiplyX(2),
+  multiplyX(3),
+  multiplyX(4)
+);
+```
+
+### 8. HOF (High Order Function) 고차함수
+
+``` javascript
+const formula = compose(
+  multiplyX(2),
+  multiplyX(3),
+  multiplyX(4)
+);
+```
+위에 있는 이 compose가 고차함수이다.
+함수를 받아 함수를 반환한다.
+
+
 <br />
 
-### 6. Eslint
+### 9. Eslint
 문법적오류나 잠재적 오류까지 찾아내고 오류의 이유를 볼 수 있게 해주는 도구 (ex. `const`의 사용을 `let`으로 제안해주는 것)
 
 <br />
 
-### 7. Prettier
+### 10. Prettier
 정해진 규칙대로 코드를 예쁘게 변경해주는 도구 (ex. 들여쓰기나 따옴표) 
 
 <br />
 
-### 8. Webpack
+### 11. Webpack
 webpack은 모듈 번들러로 파일 확장자에 맞는 로더에게 위임해 하나로 묶어서 최종 배포용 파일을 만들어준다.
 `<script>` 태그가 여러개 있을 때 순서보장을 맞게 해준다.
 
 <br />
 
-### 9. CORS (Cross-Origin Resourse Sharing)
+### 12. CORS (Cross-Origin Resourse Sharing)
 도메인 또는 포트가 다른 서버의 자원을 요청하면 발생 하는 문제 
 웹 프론트 측에서 `request header`에 `CORS` 관련 옵션을 넣어주고, 서버에서는 해당 프론트 요청을 허용하면 된다.
+
+### 13. Rest API
+어떤 `URI`(자원)에 어떤 메소드를 사용할지 개발자들 사이에서 널리 쓰이는 약속
+- `API`: 지정된 형식으로 요청하면 받을 수 있는 수단.
+- `CRUD`: 생성, 읽기, 수정, 삭제를 하는 작업을 통틀어 이르는 말
+- `Http 규약`: 서버에 Rest API로 요청을 보낼때 http의 규약에 따라 전송하게 되는것,
+`Rest API`에서는 `[Get, Post, Delete, Put, Patch]`를 사용한다.
+이중 `[Post, Put, Patch]`에는 `body` 주머니가 있어 몰래 전송이 가능하다.
+
+Restful 하게 만든 API는 주소만 봐도 파악이 가능하다.
+Post로 모든 작업을 할 수 있지만 누구든지 요청의 의도를 쉽게 파악할 수 있도록 Restful 하게 만들기 위해서는 목적에 따라 구분하여 사용해야 한다.
+
+- Get: read
+- Post: create
+- Put: 전체 update
+- Patch: 일부 update
+- Delete: delete
+
+> URI는 동사가 아닌 명사로 이루어져야 한다.
+형식이기 때문에 기술에 구애받지 않는다.
+
+<br/>
+
+
+
+
+
+
 
 <br />
 <br />
