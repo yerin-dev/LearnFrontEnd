@@ -338,6 +338,7 @@ const formula = compose(
 ### 14. JSX
 - `JS XML` 약자
 - 자바스크립트 확장 문법
+- 자바스크립트와 xml을 혼합해서 사용하는 방식
 - `react.createElement( )`을 생성하여 편하게 `html`으로도 작성 가능하게 한다.
 `cra`를 하게 되면 `webpack`에서 바벨로 처리해준다.
 
