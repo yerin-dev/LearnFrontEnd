@@ -59,14 +59,8 @@ Person.job => "free"
 
 화살표 함수에서의 `this`는 언제나 상위 스코프의 `this`를 가리킨다. 이를 `Lexical this`라고 한다.
 
-> 또한 화살표 함수는 `call, apply, bind` 메소드를 사용하여 `this`를 변경할 수 없다.
-
-
-``` javascript
-
-```
-
-> "use strict" 모드에서는 window 객체를 this를 통해 참조할 수 없기 때문에 undefined가 나올 수 있다.
+> 또한 화살표 함수는 `call, apply, bind` 메소드를 사용하여 `this`를 변경할 수 없다.<br/>
+"use strict" 모드에서는 window 객체를 this를 통해 참조할 수 없기 때문에 undefined가 나올 수 있다.
 
 <br />
 
@@ -167,6 +161,9 @@ addEventListener 함수의 콜백함수를 화살표 함수로 정의하면 this
 - `var`는 호이스팅으로 올라가 선언하기 전에도 값을 찍을 수 있다.<br/> 값이 할당되지 않았기 때문에 `undefined`가 뜬다.<br/>
 반면 `let`과 `const`는 호이스팅을 지원하지만 막아두어서 에러가 발생한다.
 
+<Br/>
+<Br/>
+<Br/>
 
 > 참조 링크
 https://poiemaweb.com/es6-arrow-function
