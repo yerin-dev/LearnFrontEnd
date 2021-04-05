@@ -1,16 +1,16 @@
 # LearnJavaScript 
 
 ## 목차
-- [this](#this)
-- [call, apply, bind](#call-apply-bind)
-- [arrow function](#arrow-function)
-- [arrow function을 사용해서는 안되는 경우](#arrow-function을-사용해서는-안되는-경우)
-- [data type](#data-type)
-- [let, const, var의 차이점](#let-const-var의-차이점)
+- [1. this](#1-this)
+- [2. call, apply, bind](#2-call-apply-bind)
+- [3. arrow function](#3-arrow-function)
+- [3-1. arrow function을 사용해서는 안되는 경우](#3-1-arrow-function을-사용해서는-안되는-경우)
+- [4. data type](#4-data-type)
+- [5. let, const, var의 차이점](#5-let-const-var의-차이점)
 
 ## 내용
 
-### this
+### 1. this
 자바스크립트의 `this`는 호출하는 방법에 의해 결정이 된다.<br/>
 누가 불렀는지에 따라서 `this`의 의미가 달라진다.
 
@@ -64,7 +64,7 @@ Person.job => "free"
 
 <br />
 
-### call, apply, bind
+### 2. call, apply, bind
 
 이는 함수에 this를 바인딩 하기 위한 방법이다.
 - call은 this를 바인딩 하면서 두번째 인자를 , 쉼표로 이어서 호출한다.
@@ -73,12 +73,12 @@ Person.job => "free"
 
 <br/>
 
-### arrow function
+### 3. arrow function
 화살표 함수는 Lexical this를 지원하므로 콜백 함수로 사용하기 편리하다. 
 
 <br/>
 
-### arrow function을 사용해서는 안되는 경우
+### 3-1. arrow function을 사용해서는 안되는 경우
 
 1. 메소드
 
@@ -133,7 +133,7 @@ addEventListener 함수의 콜백함수를 화살표 함수로 정의하면 this
 
 <br/>
 
-### data type
+### 4. data type
 자바스크립트의 데이터 타입에는 크게 두가지로 나눌 수 있다.
 
 1. 원시형
@@ -152,7 +152,7 @@ addEventListener 함수의 콜백함수를 화살표 함수로 정의하면 this
 
 <br />
   
-### let, const, var의 차이점
+### 5. let, const, var의 차이점
 
 - `let`과 `const`는 es5 이후에 나온 신문법이다.<br />
 기존 변수와 상수를 구분하지 않고 사용하던 `var`를 대신하기 위해 나왔다.
