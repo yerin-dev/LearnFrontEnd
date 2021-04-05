@@ -2,7 +2,7 @@
 
 ## 목차
 - [this](#this)
-- [call, apply, bind](#call,-apply,-bind)
+- [call, apply, bind](#call-apply-bind)
 - [arrow function](#arrow-function)
 - [arrow function을 사용해서는 안되는 경우](#arrow-function을-사용해서는-안되는-경우)
 - [data type](#data-type)
