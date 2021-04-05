@@ -10,7 +10,7 @@
 - [6. hoisting](#6-hoisting)
 - [7. curring 함수](#7-curring-함수)
 - [8. HOF (High Order Function) 고차함수](#8-HOF-High-Order-Function-고차함수)
-- [9.Eslint](#9-Eslint)
+- [9. Eslint](#9-Eslint)
 - [10. Prettier](#10-Prettier)
 - [11. Webpack](#11-Webpack)
 - [12. CORS (Cross-Origin Resourse Sharing)](#12-CORS-Cross-Origin-Resourse-Sharing)
