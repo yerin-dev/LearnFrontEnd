@@ -16,7 +16,7 @@
 - [12. CORS (Cross-Origin Resourse Sharing)](#12-CORS-Cross-Origin-Resourse-Sharing)
 - [13. Rest API](#13-Rest-API)
 - [14. JSX](#14-JSX)
-- [15.FLUX](#15-FLUX)
+- [15. FLUX](#15-FLUX)
 - [16. 사이트 렌더링방식](#16-사이트-렌더링방식)
 - [17. 리액트 성능개선 방법](#17-리액트-성능개선-방법)
 - [18. null, undefined](#18-null-undefined)
