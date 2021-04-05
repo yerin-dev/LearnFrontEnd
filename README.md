@@ -32,7 +32,7 @@
 - [30. "use strict"](#30-use-strict)
 - [31. number](#31-number)
 - [32. rest 파라미터와 spread 연산자](#32-rest-파라미터와-spread-연산자)
-- [](#)
+- [33. Node.js](#33-Nodejs)
 - [](#)
 - [](#)
 - [](#)
@@ -510,6 +510,8 @@ const newArr = [...arr] //배열 풀어서 다시 새배열에 넣기
 const newArr = [...arr1, ...arr2] //배열 합치기 << concat을 대체가능하다.
 ```
 
+### 33. Node.js
+javascript를 브라우저 밖에서 돌릴수 있는 자바스크립트 실행환경, 그래서 서버를 만들 수 있다.
 
 
 <br />
