@@ -295,7 +295,7 @@ const formula = compose(
 <br />
 
 ### 12. CORS (Cross-Origin Resourse Sharing)
-도메인 또는 포트가 다른 서버의 자원을 요청하면 발생 하는 문제 
+도메인 또는 포트가 다른 서버의 자원을 요청하면 발생 하는 문제이다.
 웹 프론트 측에서 `request header`에 `CORS` 관련 옵션을 넣어주고, 서버에서는 해당 프론트 요청을 허용하면 된다.
 
 ### 13. Rest API
