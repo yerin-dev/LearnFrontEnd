@@ -15,6 +15,18 @@
 - [11. Webpack](#11-Webpack)
 - [12. CORS (Cross-Origin Resourse Sharing)](#12-CORS-Cross-Origin-Resourse-Sharing)
 - [13. Rest API](#13-Rest-API)
+- [14. JSX](#14-JSX)
+- [15.FLUX](#15-FLUX)
+- [16. 사이트 렌더링방식](#16-사이트-렌더링방식)
+- [17. 리액트 성능개선 방법](#17-리액트-성능개선-방법)
+- [18. null, undefined](#18-null-undefined)
+- [19. ajax, fetch, axios](#19-ajax-fetch-axios)
+- [20. promise, async await](#20-promise-async-await)
+- [21. 프레임워크, 라이브러리](#21-프레임워크-라이브러리)
+- [22. 함수형 컴포넌트, 클래스형 컴포넌트](#22-함수형-컴포넌트-클래스형-컴포넌트)
+- [23. react](#23-react)
+- []()
+- []()
 - []()
 - []()
 - []()
@@ -217,7 +229,7 @@ multiplyTwo(3);
 이렇게 사용하게 되면 우리가 생각하는 실행방향은 -> 지만
 사실상 함수가 실행하는 순서는 <- 거꾸로 실행되는 것이 헷갈릴 수 있다.
 
-이 함수의 실행 순서를 -> 처럼 바꾸기 위해서는 reduce 함수를 사용할 수 있다.
+이 함수의 실행 순서를 -> 처럼 바꾸기 위해서는 `reduce` 함수를 사용할 수 있다.
 
 ``` javascript
 const formula = [
@@ -260,7 +272,7 @@ const formula = compose(
   multiplyX(4)
 );
 ```
-위에 있는 이 compose가 고차함수이다.
+위에 있는 이 `compose`가 고차함수이다.
 함수를 받아 함수를 반환한다.
 
 
@@ -277,7 +289,7 @@ const formula = compose(
 <br />
 
 ### 11. Webpack
-webpack은 모듈 번들러로 파일 확장자에 맞는 로더에게 위임해 하나로 묶어서 최종 배포용 파일을 만들어준다.
+`webpack`은 모듈 번들러로 파일 확장자에 맞는 로더에게 위임해 하나로 묶어서 최종 배포용 파일을 만들어준다.
 `<script>` 태그가 여러개 있을 때 순서보장을 맞게 해준다.
 
 <br />
@@ -294,21 +306,114 @@ webpack은 모듈 번들러로 파일 확장자에 맞는 로더에게 위임해
 `Rest API`에서는 `[Get, Post, Delete, Put, Patch]`를 사용한다.
 이중 `[Post, Put, Patch]`에는 `body` 주머니가 있어 몰래 전송이 가능하다.
 
-Restful 하게 만든 API는 주소만 봐도 파악이 가능하다.
-Post로 모든 작업을 할 수 있지만 누구든지 요청의 의도를 쉽게 파악할 수 있도록 Restful 하게 만들기 위해서는 목적에 따라 구분하여 사용해야 한다.
+`Restful` 하게 만든 `API`는 주소만 봐도 파악이 가능하다.
+`Post`로 모든 작업을 할 수 있지만 누구든지 요청의 의도를 쉽게 파악할 수 있도록 `Restful` 하게 만들기 위해서는 목적에 따라 구분하여 사용해야 한다.
 
-- Get: read
-- Post: create
-- Put: 전체 update
-- Patch: 일부 update
-- Delete: delete
+- `Get`: read
+- `Post`: create
+- `Put`: 전체 update
+- `Patch`: 일부 update
+- `Delete`: delete
 
-> URI는 동사가 아닌 명사로 이루어져야 한다.
+> `URI`는 동사가 아닌 명사로 이루어져야 한다.
 형식이기 때문에 기술에 구애받지 않는다.
 
 <br/>
 
+### 14. JSX
+- `JS XML` 약자
+- 자바스크립트 확장 문법
+- `react.createElement( )`을 생성하여 편하게 `html`으로도 작성 가능하게 한다.
+`cra`를 하게 되면 `webpack`에서 바벨로 처리해준다.
 
+<br/>
+
+### 15.FLUX
+- MVC 패턴의 문제점을 개선한 패턴이다.
+- MVC 패턴으로 진행하게되면 규모가 커지면서 Model 관리가 어려워진다.
+- 단방향 데이터 흐름을 띄는 아키텍쳐이다. (→ 추적이 쉽다, 관리하기 쉽다)
+- UI 데이터만 전달받는다.
+- UI 데이터 변경시 직접 `store`와 동기적으로 연결하지 않고, `action`을 일으켜 변경사항을 업데이트한다.
+
+
+<br/>
+
+### 16. 사이트 렌더링방식
+`SSR`<br/>
+- 페이지를 이동할때마다 서버에 요청한다. => 서버에서 렌더링
+- 소스를 전부 불러오기 때문에 검색엔진 최적화에 좋다.
+- 중복리소스와 자원낭비가 심하다.
+- 초기구동속도가 비교적 빠르다
+- 페이지 이동시 깜빡임이 있다.
+
+`CSR`<br/>
+- 필요한 데이터만 서버에 요청하기 때문에 비교적 트래픽 감소가 있다. => 클라이언트에서 렌더링
+- 깜빡이지 않기에 사용자 경험이 올라간다. (`native app`과 동일한 사용경험을 준다.)
+- 검색엔진을 최적화 하려면 따로 `SSR` 렌더링이 필요하다.
+- `SPA`방식이라 한번에 필요한 데이터를 전부 가져와 초기 속도가 오래 걸린다.
+
+<br/>
+
+### 17. 리액트 성능개선 방법
+
+- 첫 페이지 로딩 지연문제를 해결한다. => 첫 페이지의 `SSR` (Server Side Rendering)
+- 컴포넌트 `lazy loading`을 추가한다.
+- 이미지 `lazy loading`을 추가한다.
+- 네트워크 탭의 성능을 추적한다.
+- `Re-rendering`을 최소화시킨다.
+- 중복계산을 줄인다 (`UseEffect`, `UseMemo`)
+- 스켈레톤을 추가한다. (ui-ux 관점)
+
+<br/>
+
+### 18. null, undefined
+- 값이 없는 것을 뜻한다.
+- `var`, `let`과 같이 데이터에 값이 할당되지 않았을때 `undefined`가 기본으로 할당된다.
+- 하지만 `null`은 의도적으로 값이 비어있음을 표현한 것이다.
+
+<br/>
+
+### 19. ajax, fetch, axios
+`HTML` 페이지 전체가 아닌 일부분만 갱신할 수 있도록 `XMLHTMLRequest` 객체를 서버로부터 요청하는 자바스크립트 비동기 통신방식이다.
+- ajax: Jquery를 사용해야한다, promise 기반이 아니다.
+- fetch: ie를 제외한 대부분의 브라우저에서 IMPORT없는 Web API를 사용 가능, promise를 지원
+- axios: node.js와 브라우저를 위한 비동기통신 라이브러리, fetch와 달리 ie11도 지원, promise를 지원
+
+<br/>
+
+### 20. promise, async await
+`promise`는 비동기 동작 다루기 위한 오브젝트이다.
+- 비동기 데이터를 가지고 성공 - 실패를 제어할 수 있다.then, catch
+
+`async await`
+- promise를 쉽게 사용하는 신문법이다.
+
+<br/>
+
+### 21. 프레임워크, 라이브러리
+프레임 워크: 어플리케이션 개발을 위한 뼈대, 개발이 빨라진다.
+라이브러리: 어플리케이션의 기능을 빠르게 구현 제공하는 기능, 기능이라 개발 자유도가 높다
+<br/>
+
+### 22. 함수형 컴포넌트, 클래스형 컴포넌트
+함수형 컴포넌트: 짧은 코드로 구현 신문법, 메모리 자원 덜 사용, hook 지원으로 state관리 쉬움
+클래스형: 클래스 문법 라이프사이클 state관리, 지금은 hook 지원 노필요, 유지보수때문 다알아야
+<br/>
+
+### 23. react
+spa로 이루어진 프론트앤드 자바스크립트 라이브러리
+
+<br/>
+
+### 24.
+
+<br/>
+
+### 25.
+
+<br/>
+
+### 26.
 
 
 
@@ -319,7 +424,6 @@ Post로 모든 작업을 할 수 있지만 누구든지 요청의 의도를 쉽�
 <br />
 <br />
 <br />
-<br /><br /><br />
 <br />
 
 
@@ -330,6 +434,7 @@ Post로 모든 작업을 할 수 있지만 누구든지 요청의 의도를 쉽�
 <Br/>
 <Br/>
 
-> 참조 링크
-https://poiemaweb.com/es6-arrow-function
-https://sunnykim91.tistory.com/121
+> 참조 링크<br/>
+https://poiemaweb.com/es6-arrow-function<br/>
+https://sunnykim91.tistory.com/121<br/>
+https://www.youtube.com/watch?v=VEAUpHod4cg<br/>
