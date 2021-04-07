@@ -36,6 +36,7 @@
 - [34. 브라우저 렌더링의 과정](#34-브라우저-렌더링의-과정)
 - [35. MVC 패턴](#35-mvc-패턴)
 - [36. 서버사이드렌더링, 클라이언트사이드렌더링](#36-서버사이드렌더링-클라이언트사이드렌더링)
+- [37. SPA (single page application)](#37-SPA-single-page-application)
 - [](#)
 - [](#)
 - [](#)
@@ -44,7 +45,8 @@
 - [](#)
 - [](#)
 - [](#)
-- [](#)
+
+<br/>
 
 ## 내용
 
@@ -390,19 +392,24 @@ const formula = compose(
 <br/>
 
 ### 19. ajax, fetch, axios
-`HTML` 페이지 전체가 아닌 일부분만 갱신할 수 있도록 `XMLHTMLRequest` 객체를 서버로부터 요청하는 자바스크립트 비동기 통신방식이다.
-- `ajax`: `Jquery`를 사용해야한다, `promise` 기반이 아니다.
-- `fetch`: `ie`를 제외한 대부분의 브라우저에서 `IMPORT`없는 `Web API`를 사용 가능, `promise`를 지원
-- `axios`: `node.js`와 브라우저를 위한 비동기통신 라이브러리, `fetch`와 달리 ie11도 지원, `promise`를 지원
+ajax<br/>
+`HTML` 페이지 전체가 아닌 일부분만 갱신할 수 있도록 `XMLHTMLRequest` 객체를 서버로부터 요청하는 자바스크립트 비동기 통신방식이다.<br/>
+구현의 불편함을 느낀 사용자들이 `jQuery`를 통해 구현하기 시작했고, 그 이후 `es6`의 표준인 `fetch API`가 표준으로 나오게 되었다.
+
+- `fetch`: `ie`를 제외한 대부분의 브라우저에서 `IMPORT`없는 `Web API`를 사용 가능, 반환값으로 `promise`를 가진다.
+- `axios`: `node.js`와 브라우저를 위한 비동기통신 라이브러리, `fetch`와 달리 ie11도 지원, 반환값으로 `promise`를 가진다.
 
 <br/>
 
 ### 20. promise, async await
 `promise`는 비동기 동작 다루기 위한 오브젝트이다.
-- 비동기 데이터를 가지고 성공 - 실패를 제어할 수 있다.
+- 콜백지옥을 막아줄 수 있고, 비동기 데이터를 가지고 성공 - 실패를 제어할 수 있다.
 
 `async await`
-- `promise`를 쉽게 사용하는 신문법이다.
+- 자바와 같이 동기적 코드 흐름으로 개발이 가능하다.
+- 코드가 간결해지고, 가독성이 높아진다.
+- try / catch로 에러를 핸들링할 수 있다.
+- error가 어디서 발생했는지 알기 쉽다.
 
 <br/>
 
@@ -579,6 +586,15 @@ const newArr = [...arr1, ...arr2] //배열 합치기 << concat을 대체가능�
 - 앞서 SSR과 달리 클라이언트에서 렌더링 하는방식이다.
 
 <br />
+
+### 37. SPA (single page application)
+SPA는 기본적으로 웹 애플리케이션에 필요한 모든 정적 리소스를 최초에 한번 다운로드한다.<br/>
+이후 새로운 페이지 요청 시, 페이지 갱신에 필요한 데이터만을 전달받아 페이지를 갱신하므로 전체적인 트래픽을 감소할 수 있고<br/>
+전체 페이지를 다시 렌더링하지 않고 변경되는 부분만을 갱신하므로 새로고침이 발생하지 않아 네이티브 앱과 유사한 사용자 경험을 제공할 수 있다.<br/>
+<br/>
+모바일의 사용이 증가하고 있는 현 시점에 트래픽의 감소와 속도, 사용성, 반응성의 향상은 매우 중요한 이슈이다.<br/>
+SPA의 핵심 가치는 사용자 경험(UX) 향상에 있다.
+
 <br />
 <br />
 <br />
@@ -586,16 +602,13 @@ const newArr = [...arr1, ...arr2] //배열 합치기 << concat을 대체가능�
 
 
 
-
-
-<Br/>
-<Br/>
-<Br/>
 
 > 참조 링크<br/>
 https://poiemaweb.com/es6-arrow-function<br/>
+https://poiemaweb.com/js-spa<br/>
 https://sunnykim91.tistory.com/121<br/>
 https://www.youtube.com/watch?v=VEAUpHod4cg<br/>
 https://velog.io/@kler/TIL4-%EB%A1%9C%EC%BB%AC%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%84%B8%EC%85%98%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%BF%A0%ED%82%A4-%EC%A0%95%EB%A6%AC<br/>
 https://uwostudy.tistory.com/55<br/>
 https://eodevelop.tistory.com/68<br/>
+https://ithub.tistory.com/223<br/>
