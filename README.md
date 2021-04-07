@@ -25,7 +25,7 @@
 - [21. 프레임워크, 라이브러리](#21-프레임워크-라이브러리)
 - [22. 함수형 컴포넌트, 클래스형 컴포넌트](#22-함수형-컴포넌트-클래스형-컴포넌트)
 - [23. React](#23-react)
-- [24. useCallback / useMemo](#24-usecallback-usememo)
+- [24. useCallback / useMemo](#24-usecallback--usememo)
 - [25. custom hook의 use case, 장점](#25-custom-hook의-use-case-장점)
 - [26. 웹스토리지, 로컬 스토리지, 세션 스토리지, 쿠키](#26-웹스토리지-로컬-스토리지-세션-스토리지-쿠키)
 - [29. Script async, defer](#29-script-async-defer)
@@ -344,7 +344,7 @@ const formula = compose(
 
 <br/>
 
-### 15.FLUX
+### 15. FLUX
 - MVC 패턴의 문제점을 개선한 패턴이다.
 - MVC 패턴으로 진행하게되면 규모가 커지면서 Model 관리가 어려워진다.
 - 단방향 데이터 흐름을 띄는 아키텍쳐이다. (→ 추적이 쉽다, 관리하기 쉽다)
