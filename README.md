@@ -48,8 +48,8 @@
 - [35. MVC 패턴](#35-mvc-패턴)
 - [36. 서버사이드렌더링, 클라이언트사이드렌더링](#36-서버사이드렌더링-클라이언트사이드렌더링)
 - [37. SPA (single page application)](#37-spa-single-page-application)
-- [](#)
-- [](#)
+- [38. event bubbling](#38-event-bubbling)
+- [39. event loop](#39-event-loop)
 - [](#)
 - [](#)
 - [](#)
@@ -410,6 +410,13 @@ ajax<br/>
 - `fetch`: `ie`를 제외한 대부분의 브라우저에서 `IMPORT`없는 `Web API`를 사용 가능, 반환값으로 `promise`를 가진다.
 - `axios`: `node.js`와 브라우저를 위한 비동기통신 라이브러리, `fetch`와 달리 ie11도 지원, 반환값으로 `promise`를 가진다.
 
+**ajax의 단점** <br/>
+단점<br/>
+
+- 브라우저에서 JavaScript가 비활성화된 경우 작동하지 않는다.
+- 일부 웹 크롤러는 JavaScript를 실행하지 않으며 JavaScript에 의해 로드된 콘텐츠를 볼 수 없다.
+- SPA의 대부분의 단점과 같다.
+
 <br/>
 
 ### 20. promise, async await
@@ -607,7 +614,21 @@ SPA는 기본적으로 웹 애플리케이션에 필요한 모든 정적 리소�
 SPA의 핵심 가치는 사용자 경험(UX) 향상에 있다.
 
 <br />
+
+### 38. event bubbling
+`DOM` 요소에서 `event`가 발생 되면 타겟페이즈까지 `event` 처리를 시도한 다음, 해당 `event`가 부모에게 `bubbling` 되고 부모에서 같은 이벤트가 발생한다.<br/>
+이 `bubbling`은 요소의 최상단 부모요소인 `document`까지 계속적으로 발생시킨다.<br/>
+이 모양이 물 안에서 버블이 상단으로 올라가는 모습을 닮았다고 하여 `event bubbling` 이라고 부른다.
+
 <br />
+
+### 39. event loop
+- `event loop`는 `call stack`을 계속 모니터링 하고 있다.
+- `Task que, Micro Task que, render`를 감시하며 수행할 작업이 있는지 확인한다.
+- `callstack`이 비어있고 `task que`에서 콜백함수가 있는경우는 `que`에서 제거되고 실행될 `call stack`으로 보낸다.
+- 다만 여기서 `Micro Task que`는 모든 실행이 끝나기 전까지 `call stack`으로 돌아오지 않는다.
+- `Task que`는 한개만 실행하고 다시 `event loop`가 돌기 때문에 다른 부분은 작동할 수 있다.
+
 <br />
 <br />
 
