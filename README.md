@@ -106,6 +106,7 @@ new Person("ye-r1", "free");
 Person.name => "ye-r1"
 Person.job => "free"
 ```
+
 `new`를 붙여주어야 생성자 본인을 `this`로 가리키게 된다.
 
 화살표 함수에서의 `this`는 언제나 상위 스코프의 `this`를 가리킨다. 이를 `Lexical this`라고 한다.
@@ -143,6 +144,7 @@ const people = {
 
 people.whoAmI(); // undefined
 ```
+
 메소드에 화살표 함수를 쓸 경우에는 `window` 전역을 가르키는데 그것이 "use strict" 모드에서는 `undefined`가 뜬다.
 
 > 메소드에 화살표함수로 작성하고 싶을때에는 축약 메소드의 표현을 활용한다.
@@ -173,13 +175,14 @@ Object.prototype.whoAmI = function() {
 
 people.whoAmI(); // "ye-r1"
 ```
-3. 생성자 함수
-화살표 함수는 생성자 함수로 사용할 수 없다.
-생성자 함수는 `prototype` 프로퍼티를 가지며 `prototype` 프로퍼티가 가리키는 프로토타입 객체의 `constructor`를 사용한다.
-하지만 화살표 함수는 `prototype` 프로퍼티를 가지고 있지 않다.
 
-4. addEventListener의 콜백함수
-`addEventListener` 함수의 콜백함수를 화살표 함수로 정의하면 `this`가 상위 컨텍스트인 전역 객체 `window`를 가리킨다.
+3. 생성자 함수
+화살표 함수는 생성자 함수로 사용할 수 없다.<br/>
+생성자 함수는 `prototype` 프로퍼티를 가지며 `prototype` 프로퍼티가 가리키는 프로토타입 객체의 `constructor`를 사용한다.<br/>
+하지만 화살표 함수는 `prototype` 프로퍼티를 가지고 있지 않다.<br/>
+<br/>
+4. addEventListener의 콜백함수<br/>
+`addEventListener` 함수의 콜백함수를 화살표 함수로 정의하면 `this`가 상위 컨텍스트인 전역 객체 `window`를 가리킨다.<br/>
 따라서 일반 함수를 사용하여야 한다.
 
 <br/>
@@ -300,6 +303,7 @@ const formula = compose(
   multiplyX(4)
 );
 ```
+
 위에 있는 이 `compose`가 고차함수이다.<br/>
 함수를 받아 함수를 반환한다.
 
@@ -680,6 +684,7 @@ function add3(a, b) {
   return a + b;
 }
 ```
+
 리턴 값으로 소통하는 것 외에 외부 상태에 영향을 미치는 함수이기 때문에 이 예제도 순수함수라고 할 수 없다.<br/>
 <br />
 
@@ -690,11 +695,12 @@ function add5(obj, b) {
 }
 ```
 
-add5는 값을 변경하지도 않고, 외부의 상태를 변경하고 있지도 않는다. 새로운 객체를 반환했기 때문이다.<br/>
-그렇기 때문에 add5는 순수함수라고 말할 수 있다.
+`add5`는 값을 변경하지도 않고, 외부의 상태를 변경하고 있지도 않는다. 새로운 객체를 반환했기 때문이다.<br/>
+그렇기 때문에 `add5`는 순수함수라고 말할 수 있다.
 
 
 
+<br/><br/>
 > 참조 링크<br/>
 https://poiemaweb.com/es6-arrow-function<br/>
 https://poiemaweb.com/js-spa<br/>
