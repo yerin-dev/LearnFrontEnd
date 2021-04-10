@@ -50,6 +50,15 @@
 - [35. event bubbling](#38-event-bubbling)
 - [36. event loop](#39-event-loop)
 - [37. 함수형 프로그래밍](#40-함수형-프로그래밍)
+- [38. 함수](#38-함수)
+- [39. 객체](#39-객체)
+- [](#)
+- [](#)
+- [](#)
+- [](#)
+- [](#)
+- [](#)
+- [](#)
 - [](#)
 - [](#)
 - [](#)
@@ -742,9 +751,211 @@ return function(b) {
 
 <br/>
 
+### 38. 함수
+함수는 세가지 방법으로 함수를 만들 수 있습니다.<br/>
+
+1. 함수 선언문
+
+```javasciprt
+function sum(a) {
+}
+```
+
+2. 함수 표현식
+```javascript
+let sum = function(a) {
+};
+```
+
+3. 화살표 함수
+```javascript
+// 화살표(=>) 바로 리턴
+let sum = (a) => a;
+
+// 중괄호{}를 사용하면 본문에 여러 줄의 코드를 작성할 수 있음. => 중괄호는 개행 / return문이 꼭 있어야 한다.
+let sum = (a) => {
+  return a;
+}
+
+// 인수가 없는 경우
+let sum = () => "a";
+
+// 인수가 하나인 경우
+let sum = a => a;
+```
+<br/>
+
+### 39. 객체
+객체는 몇 가지 특수한 기능을 가진 연관 배열이다.
+
+- 원시형과 달리 다양한 `data`를 담을 수 있다.
+- `key`로 구분된 데이터 집합이나 복잡한 개체를 저장할 수 있다.
+- 객체는 중괄호를 이용해 만들 수 있는데 중괄호 안에는 `key`와 `value` 쌍으로 구성된 프로퍼티를 여러개 넣을 수 있다.
+
+```javascript
+  const user = {
+    name: "no_name"
+  };
+
+  user.name = "ye-r1";
+```
+
+`const`로 선언된 객체는 수정될 수 있다.<br/>
+`user` 라는 객체를 전체적으로 설정하려고 할때만 오류가 발생하고, 내부의 값을 변경하는것은 오류가 발생하지 않는다.
+
+```javascript
+  const user = {
+    name: "no_name"
+  };
+
+  user[name] = "ye-r1";
+```
+
+**대괄호 표기법**<br/>
+
+객체는 대괄호를 이용해 접근할 수 있다.
+
+```javascript
+let key = "name";
+
+console.log(user[key]); // "ye-r1"
+```
+
+`대괄호`를 사용한 접근법은 사용자의 입력값에 따라 값이 변경될 수 있으나, `점 표기법`은 유동적인 값으로 변경할 수 없다.<br/>
+
+**계산된 프로퍼티**<br/>
+객체를 만들때 객체 리터럴 안에 프로퍼티 `key`가 `대괄호`로 둘러쌓여 있는 경우 이를 `계산된 프로퍼티` 라고 한다.
+
+```javascript
+let fruit = "apple";
+
+let bag = {
+  [fruit]: 5, // 프로퍼티 이름을 동적으로 받아 온다.
+};
+
+alert( bag.apple ); // fruit에 "apple"이 할당되었다면, 5가 출력된다.
+```
+
+```javascript
+let fruit = "apple";
+let bag = {
+  [fruit + 'Juice']: 5 // bag.appleJuice = 5
+};
+```
+
+- `대괄호` 안에는 `복잡한 표현식`이 올 수도 있습니다.
+- `대괄호` 표기법은 프로퍼티 이름과 값의 `제약`을 없애주기 때문에 점 표기법보다 훨씬 강력합니다. 그런데 `작성하기 번거롭다는 단점`이 있습니다.
+
+**단축 프로퍼티**<br/>
+
+```javascript
+const user = {
+  name: name,
+  age: age
+}
+```
+
+```javascript
+const user = {
+  name,
+  age
+}
+```
+
+**프로퍼티 삭제**<br/>
+`delete user.age;`<br/>
+프로퍼티 앞에 `delete`를 붙이면 프로퍼티를 삭제할 수 있다.
+
+
+프로퍼티 이름과 값이 `동일`한 경우에는 이처럼 `단축`하여 코드를 작성할 수 있다.<br/>
+
+**in 연산자로 프로퍼티 존재 여부 확인하기**<br/>
+
+> 자바스크립트 객체는 다른 언어와는 달리, 존재하지 않는 프로퍼티에 접근하려 해도 에러가 발생하지 않고 `undefined`를 반환한다.<br/>
+이런 특징을 응용하면 프로퍼티 존재 여부를 쉽게 확인할 수 있습니다.
+
+```javascript
+alert( user.name === undefined ); // true일때 값이 존재하지 않는다는 것을 의미하게 된다.
+```
+
+```javascript
+"name" in user  //true일때 값이 있다는 것을 의미하게 된다.
+```
+또한 `undefined`와 비교하는 것 이외에도 연산자 `in`을 사용하면 프로퍼티 `존재 여부`를 확인할 수 있다.
+
+```javascript
+let user = {
+  name: undefined
+};
+
+alert( user.name ); // undefined
+alert( "name" in user ); // true
+```
+
+> 만약 프로퍼티는 `있음에도` 불구하고 값이 `undefined`일때는 `undefined`로 프로퍼티의 존재 유무를 알 수 없다.<br/>
+이럴때 `in` 연산자를 이용한다면 프로퍼티의 유무를 제대로 알 수 있다.
+
+
+**for in 반복문**<br/>
+`for in` 반복문을 사용하면 객체의 모든 `key`를 순회할 수 있다.
+
+```javascript
+const user = {
+  name: "ye-r1",
+  age: 25
+};
+for (let key in user) {
+  console.log(key); // name, age
+  console.log(user[key]); // "ye-r1", 25
+}
+```
+
+`for문`처럼 반복문 안에 `변수를 선언` 했다.<br/>
+없어도 작동하지만 작성해주는 것이 좋다.<br/>
+또한 `key` 말고 다른 변수명을 사용해도 괜찮다.<br/>
+
+**객체 정렬 방식**<br/>
+
+```javascript
+const user = {
+  name: "ye-r1",
+  age: 25
+};
+const code = {
+  "82": "Korea",
+  "44": "United Kingdom",
+  "1": "USA"
+};
+
+for (let key in user) {
+  console.log(key); // name, age
+}
+
+for (let number in code) {
+  console.log(number); // 1, 44, 82
+}
+```
+
+프로퍼티가 정수일 경우에 자동으로 `오름차순`으로 정렬되고, 정수가 아닌 경우에는 `작성한 순서대로` 프로퍼티가 나열된다.
+
+```javascript
+const code = {
+  "+82": "Korea",
+  "+44": "United Kingdom",
+  "+1": "USA"
+};
+
+for (let number in code) {
+  console.log(+number); // 82, 44, 1
+}
+```
+
+오름차순을 막고 싶은 경우에는 이런식으로 `문자`로 만들어서 출력할때 `+`로 숫자형 `형변환`을 통해 나열할 수도 있다.
+
 
 <br/><br/>
 > 참조 링크<br/>
+https://ko.javascript.info<br/>
 https://poiemaweb.com/es6-arrow-function<br/>
 https://poiemaweb.com/js-spa<br/>
 https://sunnykim91.tistory.com/121<br/>
