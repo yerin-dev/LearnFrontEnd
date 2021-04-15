@@ -55,7 +55,7 @@
 - [40. 숫자형](#40-숫자형)
 - [41. 배열](#41-배열)
 - [42. script 속성 async, defer](#42-script-속성-async-defer)
-- [](#)
+- [43. 클린코드 작성법](#43-클린코드-작성법)
 - [](#)
 - [](#)
 - [](#)
@@ -1130,6 +1130,68 @@ for (let key of name) {
 <br/>
 
 <br/>
+
+### 43. 클린코드 작성법
+
+- 1. 어떤 동작을 하는지 처음 보는 사람이 `소스를 다 읽지 않아도 알 수 있게끔` 코드를 작성한다.<br/>
+그래서 보통 함수로 별도로 빼서 동사를 사용하여 `어떤 동작`을 하는지 함수 이름으로 설명한다.
+
+```javascript
+if(button === "minus") {
+  if(count <= 1) return;
+}
+
+▽
+
+if(button === "minus" && count > 1)
+
+or
+
+const isAvailbleMinusButton = (button === "minus" && count > 1);
+if(isAvailbleMinusButton) {}
+```
+
+- 2. `if문을 중복`으로 사용하는 것 보다 조건을 `한번에` 묶거나 `변수명으로 선언`하여 사용하고,<br/>
+- `Boolean`을 나타낼때 isPlus, isMinus처럼 `함수로 분리`해서 쓰는 것이 좋다.
+
+
+```javascript
+if(method === "parse") {
+}
+```
+
+
+- 3. `문자열`로 분기처리 하는 것은 지양해야한다, `side-effect`가 일어날 수도 있기 때문이다.<br/>
+`조건 별로 함수로 나누는 것`이 좋다, 왜냐면 side-effect가 생길때 두 조건 `전부 문제`가 생길 수 있기 때문이다.
+
+- 4. 함수는 `한개의 역할만` 잘 해야한다. 예를 들면 user data를 불러오는 함수는 `불러오는 역할만` 해야한다.<br/>
+하지만 해당 함수가 불러오는 것 뿐만 아니라 다른것도 한다면 해당 함수를 `쪼개야`할 수 있다.
+
+```javascript
+isMinus(target, id, event, data, isLoading)
+
+▽
+
+isMinus({
+  target: "ul",
+  id: id,
+  event: e.currentTarget,
+  data: [{},{},{},{}],
+  isLoading: false
+})
+```
+
+- 5. 인수는 3개 이하로 사용하는것이 좋다 길면 무슨 역할을 하는지 헷갈릴수 있다.<br/>
+대신 함수가 많은 인수를 요구하면 한개의 `config object`로 묶어서 보내는것을 추천한다.
+
+```javascript
+data.map((i, idx) => {
+})
+```
+
+- 6. 인자값으로 `i` 처럼 이해 못하는 `변수명`을 지양한다.
+
+
 
 <br/><br/>
 > 참조 링크<br/>
