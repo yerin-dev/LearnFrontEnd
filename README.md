@@ -1086,6 +1086,38 @@ alert( Math.pow(2, 10) ); // 2의 10제곱 = 1024
 > push와 pop은 빠르지만 shift와 unshift는 느리다.
 <br/>
 
+`splice`<br/>
+배열에서 요소를 하나만 지우고 싶을때 사용한다.<br/>
+`splice`는 `삭제`된 요소로 구성된 `배열`을 반환다.
+
+```javascript
+let arr = ["I", "go", "home"];
+
+delete arr[1]; // "go"를 삭제한다.
+alert( arr[1] ); // undefined
+// --> arr = ["I",  , "home"];
+
+alert( arr.length ); // 3
+```
+`delete`는 key를 이용해 해당 `키에 상응하는 값`을 지웠기 때문에 공간은 남아있게 된다.<br/>
+하지만 `splice`는 요소 추가, 삭제 교체가 모두 가능하다.<br/>
+<br/>
+`arr.splice(index, deleteCount, elem1, ...)`<br/>
+
+- 첫번째 인자는 첫 `시작`범위의 인덱스를 받는다.
+- 두번째 인자는 `제거`하고자 하는 요소의 `갯수`를 받는다.
+- 그 다음에는 제거한 자리에 `추가할 요소`를 적는다.
+
+```javascript
+let arr = ["I", "study", "JavaScript", "right", "now"];
+
+let removed = arr.splice(0, 2);
+
+alert( removed ); // "I", "study"
+```
+
+<br/>
+
 **반복문**<br/>
 
 `for문`<br/>
