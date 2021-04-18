@@ -1243,6 +1243,136 @@ typescript가 `필요한 부분에만 사용`할 수도 있다.
 
 <br/>
 
+### 45. Typescript 타입 선언
+
+**Number**
+
+```typescript
+let num: number;
+let num: number = 1;
+```
+<br/>
+
+**String**
+
+```typescript
+let str: string;
+let str: string = "Red";
+```
+
+string type에 템플릿 문자열도 지원한다.
+
+<br/>
+
+**Boolean**
+
+```typescript
+let isOpened: boolean;
+let isOpened: boolean = false;
+```
+
+<br/>
+
+**Array**
+
+```typescript
+// 문자열만 가지는 배열
+let fruits: string[] = ['Apple', 'Banana', 'Mango'];
+// Or
+let fruits: Array<string> = ['Apple', 'Banana', 'Mango'];
+```
+
+문자열만 있는 배열을 선언하고 싶을때 `String[]` 으로 작성하거나 `Array<string>`으로 작성할 수 있다.
+
+<br/>
+
+```typescript
+// 다중타입(문자열과 숫자를 동시에 가지는) 배열
+let array: (string | number)[] = ['Apple', 1, 2, 'Banana'];
+// Or
+let array: Array<string | number> = ['Apple', 1, 2, 'Banana'];
+```
+
+<br/>
+
+```typescript
+let someArr: any[] = [0, 1, {}, [], 'str', false];
+```
+
+배열이 가지는 항목의 값을 `단언`할 수 없다면 `any`를 사용할 수 있다.
+
+<br/>
+
+**ani**
+
+```typescript
+let anything: ani = 0;
+```
+
+`ani`는 아무 type이나 사용할 수 있다. <br/>
+하지만 `any는` 가능하면 쓰지 않는 것이 좋다.
+
+
+<br/>
+
+**undefined / null**
+
+```typescript
+let name: undefined; 
+let money: null; 
+```
+만약 undefined를 선언하면 `undefined` 말고 선언할 수 없다.<br/>
+마찬가지로 null도 단독으로 선언하면 null 이외의 값을 가질 수 없다.
+
+<br/>
+
+**union(|)**
+
+```typescript
+let age: number | undefined;
+```
+
+2개 이상의 type을 허용하는 경우 type을 `구분`하는 역할을 한다.<br/>
+null도 마찬가지로 사용할 수 있지만, 의미에 맞게 undefined를 더 많이 사용하는 편이다.
+
+<br/>
+
+**function**
+
+```typescript
+function find(): number | undefined {
+  return name;
+}
+```
+
+`return` 값이 있으면 number를 리턴하고 찾지 못했으면 `undefined`를 리턴하게 만들 수 있다.
+
+<br/>
+
+**void**
+
+```typescript
+function print():void {
+}
+```
+
+아무것도 `return`하지 않을때 사용할 수 있고, 함수 기본이 void로 되어있어 생략할 수 있긴 하다.<br/>
+변수에 쓰이는 경우는 드물다.
+> 말 그대로 변수에 void를 쓰게 되면 아무것도 리턴하지 않는다, 즉 => undefined 밖에 할당되지 않기 때문에
+쓰이지 않는다.
+
+<br/>
+
+**unknown**
+
+```typescript
+let notSure: unknown;
+```
+
+어떤 데이터의 종류가 담길지 알 수 없는 type이 된다.<br/>
+할당해도 다른 데이터로 다시 담을 수 있다.<br/>
+하지만 typescript 의도와는 다를 수 있으니, 가능하면 쓰지 않는 것이 좋다.
+
 
 <br/><br/>
 > 참조 링크<br/>
@@ -1256,3 +1386,4 @@ https://uwostudy.tistory.com/55<br/>
 https://eodevelop.tistory.com/68<br/>
 https://ithub.tistory.com/223<br/>
 https://www.youtube.com/watch?v=Jz8Sx1XYb04<br/>
+https://heropy.blog/2020/01/27/typescript/
