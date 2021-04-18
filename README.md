@@ -57,7 +57,7 @@
 - [42. script 속성 async, defer](#42-script-속성-async-defer)
 - [43. 클린코드 작성법](#43-클린코드-작성법)
 - [44. Typescript란?](#44-typescript란)
-- [](#)
+- [45. Typescript 선언법](#45-typescript-선언법)
 - [](#)
 - [](#)
 - [](#)
@@ -1243,7 +1243,7 @@ typescript가 `필요한 부분에만 사용`할 수도 있다.
 
 <br/>
 
-### 45. Typescript 타입 선언
+### 45. Typescript 선언
 
 **Number**
 
