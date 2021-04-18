@@ -1243,7 +1243,7 @@ typescript가 `필요한 부분에만 사용`할 수도 있다.
 
 <br/>
 
-### 45. Typescript 선언
+### 45. Typescript 선언법
 
 **Number**
 
