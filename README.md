@@ -31,7 +31,7 @@
 - [7. Eslint](#7-eslint)
 - [8. Prettier](#8-prettier)
 - [9. Webpack](#9-webpack)
-- [](#)
+- [10. DOCTYPE](#10-doctype)
 - [](#)
 - [](#)
 - [](#)
@@ -199,8 +199,20 @@ data.map((i, idx) => {
 
 <br />
 
+### 10. DOCTYPE
+HTML 문서에 맨 위에 선언된 DOCTYPE에 따라 렌더링 모드를 실행한다.<br/>
+HTML을 작성할 때 DOCTYPE을 선언하면 표준모드로 실행하고, DOCTYPE 선언이 따로 없으면 Quirks mode로 실행한다.
+
+**표준모드(Standard mode)**<br/>
+브라우저가 출력하고자 하는 문서가 최신이라 판단되면 표준모드로 렌더링 한다, CSS2 스펙에 따라 CSS가 적용되었다는 것을 의미한다.
+
+**쿼크 모드(Quirks mode)**
+오래된 웹 페이지들이 최신 버전의 브라우저에서 깨져 보이지 않게하는 모드이다.
+<br />
+
 <br/><br/>
 > 참조 링크<br/>
 https://www.youtube.com/watch?v=Jz8Sx1XYb04<br/>
 https://velog.io/@kler/TIL4-%EB%A1%9C%EC%BB%AC%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%84%B8%EC%85%98%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%BF%A0%ED%82%A4-%EC%A0%95%EB%A6%AC<br/>
 https://sunnykim91.tistory.com/121<br/>
+https://velog.io/@rjsdnql123/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%A9%B4%EC%A0%91-%EB%AC%B8%EC%A0%9C-%EC%9D%80%ED%96%89-Quirks-mode-%EC%BF%BC%ED%81%AC-%EB%AA%A8%EB%93%9C-Standard-mode%ED%91%9C%EC%A4%80-%EB%AA%A8%EB%93%9C-%EB%9E%80<br/>
