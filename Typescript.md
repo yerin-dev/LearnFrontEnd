@@ -1,1 +1,206 @@
+# Learn Front-end <br/>
+<br/>
 
+## 이 문서를 읽기 전에
+
+- 현재 메모를 옮겨오거나 추가하고 있습니다.
+- 아직 목차의 순서가 정렬되지 않았습니다, 같은 언어의 개념이라도 순서가 뒤죽박죽 일 수 있습니다.
+- 공부하고 있는 개념이기에 정확한 사실에 기반하려 노력했으나, 아닐 수도 있습니다. 다른 자료와 비교해서 봐주세요.
+- 하단에 인용하거나 개념을 이해하는데 도움이 되었던 링크를 올리고 있지만 누락되었을 수도 있습니다.
+- 온전히 공부하고 이해하기 위한 목적의 문서입니다. 그점 양해 부탁드립니다.
+
+<br/>
+
+## 목차
+- [1. Typescript란?](#1-typescript란)
+- [2. Typescript 선언법](#2-typescript-선언법)
+- [](#)
+- [](#)
+- [](#)
+- [](#)
+- [](#)
+- [](#)
+
+<br/>
+
+## 내용
+
+### 45. Typescript 선언법
+
+**Number**
+
+```typescript
+let num: number;
+let num: number = 1;
+```
+<br/>
+
+**String**
+
+```typescript
+let str: string;
+let str: string = "Red";
+```
+
+string type에 템플릿 문자열도 지원한다.
+
+<br/>
+
+**Boolean**
+
+```typescript
+let isOpened: boolean;
+let isOpened: boolean = false;
+```
+
+<br/>
+
+**Array**
+
+```typescript
+// 문자열만 가지는 배열
+let fruits: string[] = ['Apple', 'Banana', 'Mango'];
+// Or
+let fruits: Array<string> = ['Apple', 'Banana', 'Mango'];
+```
+
+문자열만 있는 배열을 선언하고 싶을때 `String[]` 으로 작성하거나 `Array<string>`으로 작성할 수 있다.
+
+<br/>
+
+```typescript
+// 다중타입(문자열과 숫자를 동시에 가지는) 배열
+let array: (string | number)[] = ['Apple', 1, 2, 'Banana'];
+// Or
+let array: Array<string | number> = ['Apple', 1, 2, 'Banana'];
+```
+
+<br/>
+
+```typescript
+let someArr: any[] = [0, 1, {}, [], 'str', false];
+```
+
+배열이 가지는 항목의 값을 `단언`할 수 없다면 `any`를 사용할 수 있다.
+
+<br/>
+
+**interface**
+
+```javascript
+interface Todo {
+  id: number;
+  content: string;
+  completed: boolean;
+}
+
+let todo: Todo;
+
+// 설정된 todo는 Todo 인터페이스를 준수하여야 한다.
+todo = { id: 1, content: 'typescript', completed: false };
+```
+
+일반적으로 타입 체크를 위해 사용되며 `변수`, `함수`, `class`에 사용할 수 있다.<br/>
+`여러가지 타입을 갖는 프로퍼티로 이루어진` 새로운 타입을 정의하는 것과 유사하고, 메소드의 `구현을 강제`하여 `일관성`을 `유지`할 수 있도록 하는 것이다.<br/>
+
+```javascript
+interface Todo {
+  id: number;
+  content: string;
+  completed: boolean;
+}
+
+let todos: Todo[] = [];
+
+function addTodo(todo: Todo) {
+  todos = [...todos, todo];
+}
+
+// 설정된 todo는 Todo 인터페이스를 준수하여야 한다.
+const newTodo: Todo = { id: 1, content: 'typescript', completed: false };
+addTodo(newTodo);
+console.log(todos)
+// [ { id: 1, content: 'typescript', completed: false } ]
+```
+
+인터페이스를 사용하여 `함수 파라미터`의 타입을 선언할 수 있다.<br/>
+이때 해당 함수에는 함수 파라미터의 타입으로 지정한 인터페이스를 준수하는 인수를 전달하여야 한다.<br/>
+함수에 객체를 전달할 때 `복잡한 매개변수 체크`가 필요없어서 매우 `유용`하다.
+
+<br/>
+
+**ani**
+
+```typescript
+let anything: ani = 0;
+```
+
+`ani`는 아무 type이나 사용할 수 있다. <br/>
+하지만 `any는` 가능하면 쓰지 않는 것이 좋다.
+
+
+<br/>
+
+**undefined / null**
+
+```typescript
+let name: undefined; 
+let money: null; 
+```
+만약 undefined를 선언하면 `undefined` 말고 선언할 수 없다.<br/>
+마찬가지로 null도 단독으로 선언하면 null 이외의 값을 가질 수 없다.
+
+<br/>
+
+**union(|)**
+
+```typescript
+let age: number | undefined;
+```
+
+2개 이상의 type을 허용하는 경우 type을 `구분`하는 역할을 한다.<br/>
+null도 마찬가지로 사용할 수 있지만, 의미에 맞게 undefined를 더 많이 사용하는 편이다.
+
+<br/>
+
+**function**
+
+```typescript
+function find(): number | undefined {
+  return name;
+}
+```
+
+`return` 값이 있으면 number를 리턴하고 찾지 못했으면 `undefined`를 리턴하게 만들 수 있다.
+
+<br/>
+
+**void**
+
+```typescript
+function print():void {
+}
+```
+
+아무것도 `return`하지 않을때 사용할 수 있고, 함수 기본이 void로 되어있어 생략할 수 있긴 하다.<br/>
+변수에 쓰이는 경우는 드물다.
+> 말 그대로 변수에 void를 쓰게 되면 아무것도 리턴하지 않는다, 즉 => undefined 밖에 할당되지 않기 때문에
+쓰이지 않는다.
+
+<br/>
+
+**unknown**
+
+```typescript
+let notSure: unknown;
+```
+
+어떤 데이터의 종류가 담길지 알 수 없는 type이 된다.<br/>
+할당해도 다른 데이터로 다시 담을 수 있다.<br/>
+하지만 typescript 의도와는 다를 수 있으니, 가능하면 쓰지 않는 것이 좋다.
+
+
+<br/><br/>
+> 참조 링크<br/>
+https://heropy.blog/2020/01/27/typescript/<br/>
+https://poiemaweb.com/typescript-interface
