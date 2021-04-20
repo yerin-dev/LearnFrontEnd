@@ -1309,6 +1309,50 @@ let someArr: any[] = [0, 1, {}, [], 'str', false];
 
 <br/>
 
+**interface**
+
+```javascript
+interface Todo {
+  id: number;
+  content: string;
+  completed: boolean;
+}
+
+let todo: Todo;
+
+// 설정된 todo는 Todo 인터페이스를 준수하여야 한다.
+todo = { id: 1, content: 'typescript', completed: false };
+```
+
+일반적으로 타입 체크를 위해 사용되며 `변수`, `함수`, `class`에 사용할 수 있다.<br/>
+`여러가지 타입을 갖는 프로퍼티로 이루어진` 새로운 타입을 정의하는 것과 유사하고, 메소드의 `구현을 강제`하여 `일관성`을 `유지`할 수 있도록 하는 것이다.<br/>
+
+```javascript
+interface Todo {
+  id: number;
+  content: string;
+  completed: boolean;
+}
+
+let todos: Todo[] = [];
+
+function addTodo(todo: Todo) {
+  todos = [...todos, todo];
+}
+
+// 설정된 todo는 Todo 인터페이스를 준수하여야 한다.
+const newTodo: Todo = { id: 1, content: 'typescript', completed: false };
+addTodo(newTodo);
+console.log(todos)
+// [ { id: 1, content: 'typescript', completed: false } ]
+```
+
+인터페이스를 사용하여 `함수 파라미터`의 타입을 선언할 수 있다.<br/>
+이때 해당 함수에는 함수 파라미터의 타입으로 지정한 인터페이스를 준수하는 인수를 전달하여야 한다.<br/>
+함수에 객체를 전달할 때 `복잡한 매개변수 체크`가 필요없어서 매우 `유용`하다.
+
+<br/>
+
 **ani**
 
 ```typescript
@@ -1392,4 +1436,5 @@ https://uwostudy.tistory.com/55<br/>
 https://eodevelop.tistory.com/68<br/>
 https://ithub.tistory.com/223<br/>
 https://www.youtube.com/watch?v=Jz8Sx1XYb04<br/>
-https://heropy.blog/2020/01/27/typescript/
+https://heropy.blog/2020/01/27/typescript/<br/>
+https://poiemaweb.com/typescript-interface
