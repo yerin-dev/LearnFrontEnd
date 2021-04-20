@@ -939,13 +939,6 @@ for (let key of name) {
 > 참조 링크<br/>
 https://ko.javascript.info<br/>
 https://poiemaweb.com/es6-arrow-function<br/>
-https://poiemaweb.com/js-spa<br/>
-https://sunnykim91.tistory.com/121<br/>
 https://www.youtube.com/watch?v=VEAUpHod4cg<br/>
-https://velog.io/@kler/TIL4-%EB%A1%9C%EC%BB%AC%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%84%B8%EC%85%98%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%BF%A0%ED%82%A4-%EC%A0%95%EB%A6%AC<br/>
 https://uwostudy.tistory.com/55<br/>
-https://eodevelop.tistory.com/68<br/>
 https://ithub.tistory.com/223<br/>
-https://www.youtube.com/watch?v=Jz8Sx1XYb04<br/>
-https://heropy.blog/2020/01/27/typescript/<br/>
-https://poiemaweb.com/typescript-interface
