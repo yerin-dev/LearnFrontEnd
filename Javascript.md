@@ -11,7 +11,14 @@
 
 <br/>
 
-## 목차
+## 대목차
+
+- [Javascript](https://github.com/ye-r1/LearnFrontEnd/blob/main/Javascript.md#%EB%AA%A9%EC%B0%A8)
+- [React](https://github.com/ye-r1/LearnFrontEnd/blob/main/React.md#%EB%AA%A9%EC%B0%A8)
+- [Typescript](https://github.com/ye-r1/LearnFrontEnd/blob/main/Typescript.md#%EB%AA%A9%EC%B0%A8)
+
+## 소목차
+
 - [1. "use strict"](#1-use-strict)
 - [2. event bubbling](#2-event-bubbling)
 - [3. event loop](#3-event-loop)
@@ -27,30 +34,68 @@
 - [12. hoisting](#12-hoisting)
 - [13. curring 함수](#13-curring-함수)
 - [14. HOF (High Order Function) 고차함수](#14-hof-high-order-function-고차함수)
-- [15. CORS (Cross-Origin Resourse Sharing)](#15-cors-cross-origin-resourse-sharing)
-- [16. ajax, fetch, axios](#16-ajax-fetch-axios)
-- [17. promise, async await](#17-promise-async-await)
-- [18. Script async, defer](#18-script-async-defer)
-- [19. number](#19-number)
-- [20. rest 파라미터와 spread 연산자](#20-rest-파라미터와-spread-연산자)
-- [21. 함수형 프로그래밍](#21-함수형-프로그래밍)
-- [22. 함수](#22-함수)
-- [23. 객체](#23-객체)
-- [24. 숫자형](#24-숫자형)
-- [25. 배열](#25-배열)
+- [15. ajax, fetch, axios](#15-ajax-fetch-axios)
+- [16. promise, async await](#16-promise-async-await)
+- [17. number](#17-number)
+- [18. rest 파라미터와 spread 연산자](#18-rest-파라미터와-spread-연산자)
+- [19. 함수형 프로그래밍](#19-함수형-프로그래밍)
+- [20. 함수](#20-함수)
+- [21. 객체](#21-객체)
+- [22. 숫자형](#22-숫자형)
+- [23. 배열](#23-배열)
 - [](#)
 - [](#)
 - [](#)
 - [](#)
 - [](#)
-- [React](https://github.com/ye-r1/LearnFrontEnd/blob/main/React.md#%EB%AA%A9%EC%B0%A8)
-- [Typescript](https://github.com/ye-r1/LearnFrontEnd/blob/main/Typescript.md#%EB%AA%A9%EC%B0%A8)
 
 <br/>
 
 ## 내용
 
-### 1. this
+### 1. "use strict"
+자바스크립트 엄격모드<br/>
+비 상식적인 구문을 에러시킨다.<br/>
+"보안" 자바스크립트를 작성하는 쉬운 방법이다.
+
+<br/>
+
+### 2. event bubbling
+`DOM` 요소에서 `event`가 발생 되면 타겟페이즈까지 `event` 처리를 시도한 다음, 해당 `event`가 부모에게 `bubbling` 되고 부모에서 같은 이벤트가 발생한다.<br/>
+이 `bubbling`은 요소의 최상단 부모요소인 `document`까지 계속적으로 발생시킨다.<br/>
+이 모양이 물 안에서 버블이 상단으로 올라가는 모습을 닮았다고 하여 `event bubbling` 이라고 부른다.
+
+<br />
+
+### 3. event loop
+- `event loop`는 `call stack`을 계속 모니터링 하고 있다.
+- `Task que, Micro Task que, render`를 감시하며 수행할 작업이 있는지 확인한다.
+- `callstack`이 비어있고 `task que`에서 콜백함수가 있는경우는 `que`에서 제거되고 실행될 `call stack`으로 보낸다.
+- 다만 여기서 `Micro Task que`는 모든 실행이 끝나기 전까지 `call stack`으로 돌아오지 않는다.
+- `Task que`는 한개만 실행하고 다시 `event loop`가 돌기 때문에 다른 부분은 작동할 수 있다.
+
+<br/>
+
+### 4. script 속성 async, defer
+
+`<script async>`<br/>
+파싱을 하고 있는 도중에 동시에 다운받고 다운이 끝나면 파싱을 잠시 중단하고 실행한다.<br/>
+하지만 이는 `파싱 중 실행구문을 실행`시킨것이기에 조작하려는 시점에 `html`들이 없을 수도 있어 위험할 수 있다.<br/>
+실행구문을 불러오는 중에는 `html 파싱이 중단`되므로 여전히 페이지 로딩은 오래걸린다.<br/>
+순서의 의존적인거라면 `async` 옵션은 로딩에 문제가 걸릴 수 있다.<br/>
+<br/>
+`<script defer>`<br/>
+파싱을 하는 중에 `동시에 다운받고` 기다리다가 `html파싱이 완료`되면 실행한다.<br/>
+파싱하는 `동안` 다운받고 `html파싱이 완료`된 후에 실행이 되기 때문에 좋다.<br/>
+
+<br/>
+
+### 5. Node.js
+`javascript`를 브라우저 밖에서 돌릴수 있는 자바스크립트 실행환경, 그래서 서버를 만들 수 있다.
+
+<br/>
+
+### 6. this
 자바스크립트의 `this`는 호출하는 방법에 의해 결정이 된다.<br/>
 누가 불렀는지에 따라서 `this`의 의미가 달라진다.
 
@@ -105,7 +150,7 @@ Person.job => "free"
 
 <br />
 
-### 2. call, apply, bind
+### 7. call, apply, bind
 
 이는 함수에 `this`를 바인딩 하기 위한 방법이다.
 - `call`은 `this`를 바인딩 하면서 두번째 인자를 `,` 쉼표로 이어서 호출한다.
@@ -114,12 +159,12 @@ Person.job => "free"
 
 <br/>
 
-### 3. arrow function
+### 8. arrow function
 화살표 함수는 `Lexical this`를 지원하므로 콜백 함수로 사용하기 편리하다. 
 
 <br/>
 
-### 3-1. arrow function을 사용해서는 안되는 경우
+### 8-1. arrow function을 사용해서는 안되는 경우
 
 1. 메소드
 
@@ -176,7 +221,7 @@ people.whoAmI(); // "ye-r1"
 
 <br/>
 
-### 4. data type
+### 9. data type
 자바스크립트의 데이터 타입에는 크게 두가지로 나눌 수 있다.
 
 1. 원시형
@@ -195,7 +240,7 @@ people.whoAmI(); // "ye-r1"
 
 <br />
   
-### 5. let, const, var의 차이점
+### 10. let, const, var의 차이점
 
 - `let`과 `const`는 es5 이후에 나온 신문법이다.<br />
 기존 변수와 상수를 구분하지 않고 사용하던 `var`를 대신하기 위해 나왔다.<br/>
@@ -204,11 +249,23 @@ people.whoAmI(); // "ye-r1"
 - `var`는 호이스팅으로 올라가 선언하기 전에도 값을 찍을 수 있다.<br/> 값이 할당되지 않았기 때문에 `undefined`가 뜬다.<br/>
 반면 `let`과 `const`는 호이스팅을 지원하지만 막아두어서 에러가 발생한다.
 
-### 6. hoisting
+<br/>
+
+### 11. null, undefined
+- 값이 없는 것을 뜻한다.
+- `var`, `let`과 같이 데이터에 값이 할당되지 않았을때 `undefined`가 기본으로 할당된다.
+- 하지만 `null`은 의도적으로 값이 비어있음을 표현한 것이다.
+- null/undefined는 메서드가 없다.
+
+<br/>
+
+### 12. hoisting
 데이터를 선언하기 전에 호출했을때 아래에 있는 선언부분이 최상단으로 올라가지는 현상이다.<br/>
 함수 선언은 함수 몸체가 `hoisting` 되는 반면에, 변수 선언 상태로 작성된 함수는 변수 선언만 `hoisting` 된다.
 
-### 7. curring 함수
+<br/>
+
+### 13. curring 함수
 커링 함수의 인자로 함수를 전달하면 기능이 추가된 새 함수로 반환할 수 있다.<br/>
 객체형 프로그래밍의 `extend` 상속기능 처럼 함수형 언어에서도 사용할 수 있도록 도와주는 함수이다.
 
@@ -283,7 +340,7 @@ const formula = compose(
 );
 ```
 
-### 8. HOF (High Order Function) 고차함수
+### 14. HOF (High Order Function) 고차함수
 
 ``` javascript
 const formula = compose(
@@ -298,56 +355,6 @@ const formula = compose(
 
 
 <br />
-
-### 9. Eslint
-문법적오류나 잠재적 오류까지 찾아내고 오류의 이유를 볼 수 있게 해주는 도구 (ex. `const`의 사용을 `let`으로 제안해주는 것)
-
-<br />
-
-### 10. Prettier
-정해진 규칙대로 코드를 예쁘게 변경해주는 도구 (ex. 들여쓰기나 따옴표) 
-
-<br />
-
-### 11. Webpack
-`webpack`은 모듈 번들러로 파일 확장자에 맞는 로더에게 위임해 하나로 묶어서 최종 배포용 파일을 만들어준다.<br/>
-`<script>` 태그가 여러개 있을 때 순서보장을 맞게 해준다.
-
-<br />
-
-### 12. CORS (Cross-Origin Resourse Sharing)
-도메인 또는 포트가 다른 서버의 자원을 요청하면 발생 하는 문제이다.<br/>
-웹 프론트 측에서 `request header`에 `CORS` 관련 옵션을 넣어주고, 서버에서는 해당 프론트 요청을 허용하면 된다.
-
-### 13. Rest API
-어떤 `URI`(자원)에 어떤 메소드를 사용할지 개발자들 사이에서 널리 쓰이는 약속
-- `API`: 지정된 형식으로 요청하면 받을 수 있는 수단.
-- `CRUD`: 생성, 읽기, 수정, 삭제를 하는 작업을 통틀어 이르는 말
-- `Http 규약`: 서버에 Rest API로 요청을 보낼때 http의 규약에 따라 전송하게 되는것,
-`Rest API`에서는 `[Get, Post, Delete, Put, Patch]`를 사용한다.
-이중 `[Post, Put, Patch]`에는 `body` 주머니가 있어 몰래 전송이 가능하다.
-
-`Restful` 하게 만든 `API`는 주소만 봐도 파악이 가능하다.
-`Post`로 모든 작업을 할 수 있지만 누구든지 요청의 의도를 쉽게 파악할 수 있도록 `Restful` 하게 만들기 위해서는 목적에 따라 구분하여 사용해야 한다.
-
-- `Get`: read
-- `Post`: create
-- `Put`: 전체 update
-- `Patch`: 일부 update
-- `Delete`: delete
-
-> `URI`는 동사가 아닌 명사로 이루어져야 한다.
-형식이기 때문에 기술에 구애받지 않는다.
-
-<br/>
-
-### 14. null, undefined
-- 값이 없는 것을 뜻한다.
-- `var`, `let`과 같이 데이터에 값이 할당되지 않았을때 `undefined`가 기본으로 할당된다.
-- 하지만 `null`은 의도적으로 값이 비어있음을 표현한 것이다.
-- null/undefined는 메서드가 없다.
-
-<br/>
 
 ### 15. ajax, fetch, axios
 ajax<br/>
@@ -378,56 +385,7 @@ ajax<br/>
 
 <br/>
 
-### 17. 웹스토리지, 로컬 스토리지, 세션 스토리지, 쿠키
-1. 웹스토리지
-- `Key`와 `value` 형태로 이루어진 저장소이다.
-- 로컬스토리지와, 세션스토리지가 있다.
-- 클라이언트에 대한 정보를 저장한다.
-- `HTML5`에서 새로 추가되었다.
-- `HTML5`를 지원하지 않으면 사용이 불가능하다.
-- `string`만 저장 가능하다.
-- 용량이 크다.
-
-1-1) 로컬스토리지
-- 영구적으로 데이터를 저장할 수 있다.
-- 자동 로그인을 예로 들 수 있다.
-
-1-2) 세션스토리지
-- 세션 스토리지는 세션 종료 시 클라이언트에 대한 정보를 삭제한다.
-- 에디터 글 자동 불러오기를 예로 들 수 있다.
-
-2. 쿠키
-- 대부분의 브라우저가 지원한다.
-- 쿠키의 용량이 웹스토리지에 비해 작다.
-- 암호화가 없기에 사용자 정보를 도난당할 위험이 있다.
-- 로컬에만 정보를 저장합니다.
-- ID 자동완성을 예로 들 수 있다.
-- 로컬에 저장하기에 공지 메세지를 하루 안보게 하는것도 가능하다.
-- 비회원의 장바구니를 예로 들 수 있다.
-
-<br/>
-
-### 18. Script async, defer
-`<script async>`
-- 파싱중에 동시에 다운받고 다운이 끝나면 파싱을 잠시 중단하고 실행한다.
-- 파싱중 실행구문을 실행시킨것이기에 조작하려는 시점에 `html`들이 없어 위험할 수 있다.
-- 실행구문을 불러오는 중에는 `html` 파싱이 중단되므로 페이지 로딩이 오래걸린다.
-- script 코드가 순서의 의존적인거라면 `async` 옵션은 로딩에 문제가 걸릴 수 있다.
-
-`<script defer>`
-- 파싱중에 동시에 다운받고 기다리다가 `html`파싱이 완료되면 실행한다.
-- 파싱하는 동안 다운받고 `html` 파싱이 완료된 후에 실행이 되기 때문에 좋다.
-
-<br/>
-
-### 19. "use strict"
-자바스크립트 엄격모드<br/>
-비 상식적인 구문을 에러시킨다.<br/>
-"보안" 자바스크립트를 작성하는 쉬운 방법이다.
-
-<br/>
-
-### 20. number
+### 17. number
 - 자바스크립트는 `number` 종류가 하나만 있다.
 - 다른 언어에서는 용량, 속성에 따라 다르게 선언해야한다.
 - 하지만 자바스크립트에서는 굳이 `number`라고 선언하지 않아도 다이나믹하게 자기가 결정한다.
@@ -439,7 +397,7 @@ ajax<br/>
 
 <br/>
 
-### 21. rest 파라미터와 spread 연산자
+### 18. rest 파라미터와 spread 연산자
 1. `rest` 파라미터<br/>
 함수의 인자를 여러개로 넣어보낼때 `function(...object) {}` 로 받으면 배열로 반환이 된다.
 
@@ -451,54 +409,10 @@ console.log(...arr);  //배열 풀기
 const newArr = [...arr] //배열 풀어서 다시 새배열에 넣기
 const newArr = [...arr1, ...arr2] //배열 합치기 << concat을 대체가능하다.
 ```
-<br/>
-
-### 22. Node.js
-`javascript`를 브라우저 밖에서 돌릴수 있는 자바스크립트 실행환경, 그래서 서버를 만들 수 있다.
 
 <br/>
 
-### 23. 브라우저 렌더링의 과정
-1. `Loader` 가 서버로 부터 정보들을 불러온다.<br/>
-2. 파싱을 통해 문서를 `DOM` 트리로 만든다.<br/>
-3. `DOM` 트리가 구축되는 동안, 브라우저는 `render` 트리를 구축한다.<br/>
-4. `CSS` 설정/레이아웃 위치 지정한다.<br/>
-5. `rendering` 트리가 그려진다.
- 
-<br/>
-
-### 24. MVC 패턴
-시각적인 부분만 수정하려면 `view`에 해당하는 부분만 수정하면 되고<br/>
-시각적인 부분과 관계 없이 데이터 처리 부분만 수정하려면 `model` 부분만,<br/>
-프로그램간 연결과 제어를 수정하려면 `controller` 부분만 수정하면 되는 방식이다.
-
-- M) `model` - 데이터를 처리하는 역할
-- V) `view` - 사용자가 보는 화면
-- C) `controller` - 각 요소들을 연결하고 데이터와 시각적 부분의 연결등을 관리한다
-
-> 분리되어있어 유지보수가 편하고 어플리케이션의 확장성과 유연성이 늘어나고 중복코딩의 문제점이 사라진다.<br/>
-유저 인터페이스와 비지니스 로직이 분리된다.
-
-<br />
-
-
-### 25. event bubbling
-`DOM` 요소에서 `event`가 발생 되면 타겟페이즈까지 `event` 처리를 시도한 다음, 해당 `event`가 부모에게 `bubbling` 되고 부모에서 같은 이벤트가 발생한다.<br/>
-이 `bubbling`은 요소의 최상단 부모요소인 `document`까지 계속적으로 발생시킨다.<br/>
-이 모양이 물 안에서 버블이 상단으로 올라가는 모습을 닮았다고 하여 `event bubbling` 이라고 부른다.
-
-<br />
-
-### 26. event loop
-- `event loop`는 `call stack`을 계속 모니터링 하고 있다.
-- `Task que, Micro Task que, render`를 감시하며 수행할 작업이 있는지 확인한다.
-- `callstack`이 비어있고 `task que`에서 콜백함수가 있는경우는 `que`에서 제거되고 실행될 `call stack`으로 보낸다.
-- 다만 여기서 `Micro Task que`는 모든 실행이 끝나기 전까지 `call stack`으로 돌아오지 않는다.
-- `Task que`는 한개만 실행하고 다시 `event loop`가 돌기 때문에 다른 부분은 작동할 수 있다.
-
-<br />
-
-### 27. 함수형 프로그래밍
+### 19. 함수형 프로그래밍
 성공적인 프로그래밍을 위해 `순수 함수`를 만들고 `모듈화` 수준을 높이는 프로그래밍 패러다임이다.<br/>
 함수형 프로그래밍은 조합성을 강조하고, 이러한 순수함수들의 조합으로 프로그래밍을 한다.<br/>
 <br/>
@@ -621,7 +535,7 @@ return function(b) {
 
 <br/>
 
-### 28. 함수
+### 20. 함수
 함수는 세가지 방법으로 함수를 만들 수 있습니다.<br/>
 
 1. 함수 선언문
@@ -655,7 +569,7 @@ let sum = a => a;
 ```
 <br/>
 
-### 29. 객체
+### 21. 객체
 객체는 몇 가지 특수한 기능을 가진 연관 배열이다.
 
 - 원시형과 달리 다양한 `data`를 담을 수 있다.
@@ -824,7 +738,7 @@ for (let number in code) {
 
 <br/>
 
-### 30. 숫자형
+### 22. 숫자형
 
 **숫자를 입력하는 다양한 방법**<br/>
 
@@ -915,7 +829,7 @@ alert( Math.pow(2, 10) ); // 2의 10제곱 = 1024
 
 <br/>
 
-### 31. 배열
+### 23. 배열
 
 `큐(queue)`는 배열을 사용해 만들 수 있는 대표적인 자료구조로, 배열과 마찬가지로 순서가 있는 컬렉션을 저장하는 데 사용한다.<br/>
 큐에서 사용하는 주요 연산은 다음과 같다.
@@ -1016,81 +930,6 @@ for (let key of name) {
 배열은 `객체형`에 속하므로 `for in`을 사용하는 것도 가능하지만 여러가지 문제가 있으므로 되도록이면 배열은 `for of`를 사용하는 것이 좋다.
 
 <br/>
-
-### 32. script 속성 async, defer
-
-`<script async>`<br/>
-파싱을 하고 있는 도중에 동시에 다운받고 다운이 끝나면 파싱을 잠시 중단하고 실행한다.<br/>
-하지만 이는 `파싱 중 실행구문을 실행`시킨것이기에 조작하려는 시점에 `html`들이 없을 수도 있어 위험할 수 있다.<br/>
-실행구문을 불러오는 중에는 `html 파싱이 중단`되므로 여전히 페이지 로딩은 오래걸린다.<br/>
-순서의 의존적인거라면 `async` 옵션은 로딩에 문제가 걸릴 수 있다.<br/>
-<br/>
-`<script defer>`<br/>
-파싱을 하는 중에 `동시에 다운받고` 기다리다가 `html파싱이 완료`되면 실행한다.<br/>
-파싱하는 `동안` 다운받고 `html파싱이 완료`된 후에 실행이 되기 때문에 좋다.<br/>
-<br/>
-
-<br/>
-
-### 33. 클린코드 작성법
-
-1. 어떤 동작을 하는지 처음 보는 사람이 `소스를 다 읽지 않아도 알 수 있게끔` 코드를 작성한다.<br/>
-그래서 보통 함수로 별도로 빼서 동사를 사용하여 `어떤 동작`을 하는지 함수 이름으로 설명한다.
-
-```javascript
-if(button === "minus") {
-  if(count <= 1) return;
-}
-
-▽
-
-if(button === "minus" && count > 1)
-
-or
-
-const isAvailbleMinusButton = (button === "minus" && count > 1);
-if(isAvailbleMinusButton) {}
-```
-
-2. `if문을 중복`으로 사용하는 것 보다 조건을 `한번에` 묶거나 `변수명으로 선언`하여 사용하고,<br/>
-- `Boolean`을 나타낼때 isPlus, isMinus처럼 `함수로 분리`해서 쓰는 것이 좋다.
-
-
-```javascript
-if(method === "parse") {
-}
-```
-
-
-3. `문자열`로 분기처리 하는 것은 지양해야한다, `side-effect`가 일어날 수도 있기 때문이다.<br/>
-`조건 별로 함수로 나누는 것`이 좋다, 왜냐면 side-effect가 생길때 두 조건 `전부 문제`가 생길 수 있기 때문이다.
-
-4. 함수는 `한개의 역할만` 잘 해야한다. 예를 들면 user data를 불러오는 함수는 `불러오는 역할만` 해야한다.<br/>
-하지만 해당 함수가 불러오는 것 뿐만 아니라 다른것도 한다면 해당 함수를 `쪼개야`할 수 있다.
-
-```javascript
-isMinus(target, id, event, data, isLoading)
-
-▽
-
-isMinus({
-  target: "ul",
-  id: id,
-  event: e.currentTarget,
-  data: [{},{},{},{}],
-  isLoading: false
-})
-```
-
-5. 인수는 3개 이하로 사용하는것이 좋다 길면 무슨 역할을 하는지 헷갈릴수 있다.<br/>
-대신 함수가 많은 인수를 요구하면 한개의 `config object`로 묶어서 보내는것을 추천한다.
-
-```javascript
-data.map((i, idx) => {
-})
-```
-
-6. 인자값으로 `i` 처럼 이해 못하는 `변수명`을 지양한다.
 
 
 <br/><br/>
