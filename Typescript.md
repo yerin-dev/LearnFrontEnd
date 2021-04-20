@@ -25,7 +25,25 @@
 
 ## 내용
 
-### 45. Typescript 선언법
+### 1. Typescript란?
+
+`typescript`는 오픈소스 언어이며,  `javascript` 위에서 동작한다. (확장된 개념)<br/>
+세계에서 가장 많이 쓰이고 있는 툴이며 `type`의 정의를 더해준다.<br/>
+<br/>
+typescript에서 type을 작성하는 것은 `선택요소`이다, 즉 type을 `작성하지 않아도 된다.`<br/>
+<br/>
+모든 유효한 javascript 코드는 typescript 코드라고 말할 수 있다. <br/>
+왜냐면 typescript는 `javascript를 기반으로 만들어진 언어`이기 때문이다.<br/>
+<br/>
+typescript 코드는 javascript코드로 `변환`이 되는데 typescript `컴파일러`를 사용하거나 `바벨`을 이용할 수 있다.<br/>
+이 변환한 코드는 javascript가 동작하는 어떤 곳에서도 사용할 수 있다.<br/>
+<br/>
+typescript를 사용하기 위해서 꼭 전부를 typescript로 바꿀 필요가 없다.<br/>
+typescript가 `필요한 부분에만 사용`할 수도 있다.
+
+<br/>
+
+### 2. Typescript 선언법
 
 **Number**
 
