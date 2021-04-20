@@ -13,9 +13,11 @@
 
 ## 대목차
 
-- [Javascript](https://github.com/ye-r1/LearnFrontEnd/blob/main/Javascript.md#%EB%AA%A9%EC%B0%A8)
-- [React](https://github.com/ye-r1/LearnFrontEnd/blob/main/React.md#%EB%AA%A9%EC%B0%A8)
-- [Typescript](https://github.com/ye-r1/LearnFrontEnd/blob/main/Typescript.md#%EB%AA%A9%EC%B0%A8)
+- [Javascript](https://github.com/ye-r1/LearnFrontEnd/blob/main/Javascript.md#%EC%9D%B4-%EB%AC%B8%EC%84%9C%EB%A5%BC-%EC%9D%BD%EA%B8%B0-%EC%A0%84%EC%97%90)
+- [React](https://github.com/ye-r1/LearnFrontEnd/blob/main/React.md#%EC%9D%B4-%EB%AC%B8%EC%84%9C%EB%A5%BC-%EC%9D%BD%EA%B8%B0-%EC%A0%84%EC%97%90)
+- [Typescript](https://github.com/ye-r1/LearnFrontEnd/blob/main/Typescript.md#%EC%9D%B4-%EB%AC%B8%EC%84%9C%EB%A5%BC-%EC%9D%BD%EA%B8%B0-%EC%A0%84%EC%97%90)
+
+<br/>
 
 ## 소목차
 
