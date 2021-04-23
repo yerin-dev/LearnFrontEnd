@@ -151,7 +151,7 @@ const [count, setCount] = useState();
 ```
 
 구조분해할당은 `react useState`에서도 볼 수 있는데, `[count,setCount]`는 배열의 0번째 값과 1번째 값을 가져온 것이다.<br/>
-하 `interface, class, type alias`를 이용하여 가져올 수 있음에도 불구하고 tuple을 사용하는 것은 지양해야한다.
+하지만 `interface, class, type alias`를 이용하여 가져올 수 있음에도 불구하고 tuple을 사용하는 것은 지양해야한다.
 
 
 <br/>
