@@ -130,10 +130,29 @@ function printArr(fruits: readonly string[]) {
 
 ```javascript
 let student: [string, number];
-student = ["ye-r1", 1]; // 첫번째의 인자는 string을, 두번째의 인자는 number의 type이 된다.
+student = ["ye-r1", 25]; // 첫번째의 인자는 string을, 두번째의 인자는 number의 type이 된다.
 ```
 
-기존 방식의 `string[]` 배열은 문자열만 가질 수 있는데, tuple을 사용하면 서로 다른 타입을 가질 수 있다.<br/>
+기존 방식의 `string[]` 배열은 문자열만 가질 수 있는데, tuple을 사용하면 서로 다른 type을 가질 수 있다.<br/>
+하지만 tuple을 사용하는 것을 권장하지 않는다.<br/>
+값을 출력할 때 `student[0]`처럼 가독성이 떨어지고 불편하기 때문이다.<br/>
+tuple을 object나 class 형태로 사용한다면 `student.name` 처럼 명시적으로 접근할 수 있기 때문에, 되도록이면 다른 방식으로 접근하는 것이 좋다.<br/>
+<br/>
+하지만 위의 것들을 사용하지 않고 명시적으로 사용할 수 있는 방법이 있는데, 바로 `구조분해할당 (object destructuring)` 이다.<br/>
+
+```javascript
+const [name, age] = student;
+```
+
+위와같이 `student[0]`, `student[1]`의 배열을 `명시적으로 선언`하여 가져올 수 있다.<br/>
+
+```javascript
+const [count, setCount] = useState();
+```
+
+구조분해할당은 `react useState`에서도 볼 수 있는데, `[count,setCount]`는 배열의 0번째 값과 1번째 값을 가져온 것이다.<br/>
+하 `interface, class, type alias`를 이용하여 가져올 수 있음에도 불구하고 tuple을 사용하는 것은 지양해야한다.
+
 
 <br/>
 
