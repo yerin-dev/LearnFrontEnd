@@ -111,6 +111,32 @@ let someArr: any[] = [0, 1, {}, [], 'str', false];
 
 <br/>
 
+**readonly**
+
+```javascript
+function printArr(fruits: readonly string[]) {
+}
+```
+
+주어진 함수의 인자를 변경하고 싶지 않을때 `readonly`를 사용하여 타입을 보장받을 수 있다.<br/>
+읽을 수만 있기 때문에 데이터를 조작한다면 에러가 발생한다. (push,pop)<br/>
+<br/>
+또한 `readonly`를 사용하는 경우에는 `string[]` 처럼 표기할 수 있지만, `Array<string>`으로 표기할 수 없다.<br/>
+일관성을 위해 `string[]`과 같은 방식으로 통일하는 것이 좋다.
+
+<br/>
+
+**tuple**
+
+```javascript
+let student: [string, number];
+student = ["ye-r1", 1]; // 첫번째의 인자는 string을, 두번째의 인자는 number의 type이 된다.
+```
+
+기존 방식의 `string[]` 배열은 문자열만 가질 수 있는데, tuple을 사용하면 서로 다른 타입을 가질 수 있다.<br/>
+
+<br/>
+
 **interface**
 
 ```javascript
