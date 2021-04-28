@@ -975,6 +975,36 @@ for (let key of name) {
 
 <br/>
 
+**유사배열**<br/>
+
+```javascript
+const array = [1, 2, 3];
+const nodes = document.querySelectorAll('div');
+const els = document.body.children;
+
+Array.isArray(array); // true
+Array.isArray(nodes); // false
+Array.isArray(els); // false
+```
+
+직접 `배열 리터럴로` 선언한 array만 `배열`이다.<br/>
+`Array.isArray` 이외에도 `instanceof`로도 판단할 수 있다.<br/>
+배열과 유사배열을 구분해야 하는 이유는, 유사배열의 경우 `배열의 메서드`를 쓸 수 없기 때문이다.
+
+```javascript
+[].forEach.call(els, function(el) { console.log(el); });
+```
+
+이러한 방식으로 메서드를 빌려온다면, 유사배열에도 `forEach, map, filter, reduce` 등의 다른 배열 메서드를 사용할 수 있다.
+
+```javascript
+Array.from(nodes).forEach(function(el) { console.log(el) });
+```
+
+최신 자바스크립트에서는 `Array.from`으로 더 간단하게 할 수 있다.
+
+<br/>
+
 ### 24. prototype
 객체의 원형이라고 할 수 있다.<br/>
 함수는 객체고 생성자로 사용될 함수도 객체다.<br/>
@@ -993,3 +1023,4 @@ https://poiemaweb.com/es6-arrow-function<br/>
 https://www.youtube.com/watch?v=VEAUpHod4cg<br/>
 https://uwostudy.tistory.com/55<br/>
 https://ithub.tistory.com/223<br/>
+https://www.zerocho.com/category/JavaScript/post/5af6f9e707d77a001bb579d2<br/>
