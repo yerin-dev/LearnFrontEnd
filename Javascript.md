@@ -1005,6 +1005,34 @@ Array.from(nodes).forEach(function(el) { console.log(el) });
 
 <br/>
 
+**includes**<br/>
+
+`includes()` 메서드는 배열이 특정 요소를 포함하고 있는지 판별한 후 `boolean` 값으로 반환한다.
+
+```javascript
+const pets = ['cat', 'dog', 'bat'];
+pets.includes('cat'); //true
+pets.includes('at'); //false
+```
+
+> 문자나 문자열을 비교할 때, includes()는 `대소문자를 구분`한다.
+
+**[].includes(탐색할 요소, 시작할 위치)** (Optional) <br/>
+
+```javascript
+[1, 2, 3].includes(3, 3);  // false
+[1, 2, 3].includes(3, -1); // true
+[1, 2, NaN].includes(NaN); // true
+```
+
+- 이 배열에서 탐색할 요소의 시작할 위치를 정할 수 있다.
+- 음의 값은 배열의 길이에서 음의 값을 더하여 검색한다.
+- 기본값은 0 이다.
+- 배열 객체가 되기 위한 `this` 값을 요구하지 않아, 유사배열 객체에 적용될 수 있다.
+- ie를 지원하지 않는다.
+
+<br/>
+
 ### 24. prototype
 객체의 원형이라고 할 수 있다.<br/>
 함수는 객체고 생성자로 사용될 함수도 객체다.<br/>
