@@ -1025,11 +1025,11 @@ pets.includes('at'); //false
 [1, 2, NaN].includes(NaN); // true
 ```
 
-- 이 배열에서 탐색할 요소의 시작할 위치를 정할 수 있다.
-- 음의 값은 배열의 길이에서 음의 값을 더하여 검색한다.
+- 이 배열에서 탐색할 요소의 `시작할 위치`를 정할 수 있다.
+- `음의 값`은 배열의 길이에서 음의 값을 `더하여` 검색한다.
 - 기본값은 0 이다.
-- 배열 객체가 되기 위한 `this` 값을 요구하지 않아, 유사배열 객체에 적용될 수 있다.
-- ie를 지원하지 않는다.
+- 배열 객체가 되기 위한 `this` 값을 요구하지 않아, `유사배열 객체`에 적용될 수 있다.
+- `ie`를 지원하지 않는다.
 
 <br/>
 
@@ -1052,3 +1052,4 @@ https://www.youtube.com/watch?v=VEAUpHod4cg<br/>
 https://uwostudy.tistory.com/55<br/>
 https://ithub.tistory.com/223<br/>
 https://www.zerocho.com/category/JavaScript/post/5af6f9e707d77a001bb579d2<br/>
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/includes<br/>
