@@ -270,8 +270,68 @@ let notSure: unknown;
 할당해도 다른 데이터로 다시 담을 수 있다.<br/>
 하지만 typescript 의도와는 다를 수 있으니, 가능하면 쓰지 않는 것이 좋다.
 
+<br/>
+
+**Type Alias**
+
+```typescript
+// 타입 앨리어스
+type Person = {
+  name: string,
+  age?: number
+}
+
+or
+
+//인터페이스
+interface Person {
+  name: string,
+  age?: number
+}
+
+// 빈 객체를 Person 타입으로 지정
+const person = {} as Person;
+person.name = 'Lee';
+person.age = 20;
+person.address = 'Seoul'; // Error
+```
+
+
+타입 앨리어스는 `새로운 타입`을 `정의`한다.<br/>
+타입으로 사용할 수 있다는 점에서 타입 앨리어스는 인터페이스와 `유사`하다.<br/>
+
+> 하지만 타입 앨리어스는 `원시값, 유니온 타입, 튜플 등`도 타입으로 `지정`할 수 있다.
+
+```typescript
+// 문자열 리터럴로 타입 지정
+type Str = 'Lee';
+
+// 유니온 타입으로 타입 지정
+type Union = string | null;
+
+// 문자열 유니온 타입으로 타입 지정
+type Name = 'Lee' | 'Kim';
+
+// 숫자 리터럴 유니온 타입으로 타입 지정
+type Num = 1 | 2 | 3 | 4 | 5;
+
+// 객체 리터럴 유니온 타입으로 타입 지정
+type Obj = {a: 1} | {b: 2};
+
+// 함수 유니온 타입으로 타입 지정
+type Func = (() => string) | (() => void);
+
+// 인터페이스 유니온 타입으로 타입 지정
+type Shape = Square | Rectangle | Circle;
+
+// 튜플로 타입 지정
+type Tuple = [string, boolean];
+const t: Tuple = ['', '']; // Error
+```
+
 
 <br/><br/>
 > 참조 링크<br/>
 https://heropy.blog/2020/01/27/typescript/<br/>
-https://poiemaweb.com/typescript-interface
+https://poiemaweb.com/typescript-interface<br/>
+https://poiemaweb.com/typescript-alias<br/>
