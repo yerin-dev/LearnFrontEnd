@@ -227,10 +227,11 @@ let money: null;
 
 ```typescript
 let age: number | undefined;
+type Direction = 'left' | 'right' | 'up' | 'down';
 ```
 
 2개 이상의 type을 허용하는 경우 type을 `구분`하는 역할을 한다.<br/>
-null도 마찬가지로 사용할 수 있지만, 의미에 맞게 undefined를 더 많이 사용하는 편이다.
+모든 가능한 `케이스`중에 발생할 수 있는 `딱 하나`를 담을 때 `union type`을 이용한다.
 
 <br/>
 
