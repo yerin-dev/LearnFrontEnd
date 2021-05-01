@@ -441,7 +441,7 @@ fe.name = 'josh';
 fe.skill = 'TypeScript';
 ```
 
-class 확장처럼 interface에도 확장해서 사용할 수 있습니다.
+class 확장처럼 interface에도 확장해서 사용할 수 있다.
 
 <br/>
 
@@ -467,7 +467,7 @@ brewedBeer.brand = 'Pangyo Craft';
 brewedBeer.brew();
 ```
 
-인터페이스에 여러 가지 타입을 조합하여 만들 수 있습니다.
+인터페이스에 여러 가지 타입을 조합하여 만들 수 있다.
 
 <br/>
 
