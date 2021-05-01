@@ -336,7 +336,85 @@ function find(): number | undefined {
 
 `return` 값이 있으면 number를 리턴하고 찾지 못했으면 `undefined`를 리턴하게 만들 수 있다.
 
+```typescript
+// any를 사용하는 경우
+function getAge(age: any) {
+  // 에러 발생, age의 타입이 any로 추론되기 때문에 숫자 관련된 API를 작성할 때 코드가 자동 완성되지 않는다.
+  age.toFixe();
+}
+
+// 유니온 타입을 사용하는 경우
+function getAge(age: number | string) {
+  if (typeof age === 'number') {
+    // 정상 동작, age의 타입이 `number`로 추론되기 때문에 숫자 관련된 API를 쉽게 자동완성 할 수 있다.
+    age.toFixed();
+    return age;
+  }
+}
+```
+
+type을 추론하여 해당 타입과 관련된 API를 쉽게 `자동완성` 할 수 있다.
+
 <br />
+
+#### 인터섹션 타입(Intersection Type)
+
+여러 타입을 모두 만족하는 하나의 타입을 의미한다.
+
+```typescript
+interface Person {
+  name: string;
+  age: number;
+}
+interface Developer {
+  name: string;
+  skill: number;
+}
+type Capt = Person & Developer;
+```
+
+Capt 타입은 Person 타입과, Developer 의 타입을 `&` 연산자를 이용하여 합친  할당한 코드이다.
+
+```typescript
+{
+  name: string;
+  age: number;
+  skill: string;
+}
+```
+
+이처럼 `&` 연산자를 이용해 `여러 개의 타입 정의`를 `하나로 합치는 방식`을 `인터섹션 타입` 정의 방식이라고 한다.
+
+<br/>
+
+**union 사용시 주의할점**<br/>
+
+```typescript
+interface Person {
+  name: string;
+  age: number;
+}
+interface Developer {
+  name: string;
+  skill: string;
+}
+function introduce(someone: Person | Developer) {
+  someone.name; // O 정상 동작
+  someone.age; // X 타입 오류
+  someone.skill; // X 타입 오류
+}
+```
+
+> 유니온 타입은 A도 될 수 있고 B도 될 수 있다고 생각하면,<br/>
+파라미터의 타입이 Person도 되고 Developer도 될테니 함수 안에서<br/>
+당연히 이 `인터페이스들이` 제공하는 `속성`들을 사용할 수 있겠지라고 생각할 수 있다.<br/>
+하지만, 타입스크립트 관점에서는 introduce() 함수를 `호출하는 시점에`<br/>
+Person 타입이 올지 Developer 타입이 올지 알 수가 없기 때문에<br/>
+어느 타입이 들어오든 간에 오류가 안 나는 방향으로 타입을 `추론`하게 된다.<br/>
+결과적으로 함수 안에서는 별도의 `타입 가드(Type Guard)`를 이용하여 타입의 `범위를 좁히지 않는 이상`<br/>
+기본적으로는 두 타입에 `공통적으로 들어있는 속성만` `접근`할 수 있게 된다.
+
+<br/>
 
 #### function
 
@@ -560,6 +638,7 @@ brewedBeer.brew();
 인터페이스에 여러 가지 타입을 조합하여 만들 수 있다.
 
 <br/>
+
 
 #### unknown
 
