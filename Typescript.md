@@ -157,22 +157,84 @@ const [count, setCount] = useState();
 
 #### 6. Enum
 
-특정 값(상수)들의 집합을 의미한다.
+특정 값(상수)들의 집합을 의미한다.<br/>
+타입스크립트에서는 문자형 이넘과 숫자형 이넘을 지원한다.
+
+
+**숫자형 이넘**<br/>
+```typescript
+enum Direction {
+  Up = 1,
+  Down,
+  Left,
+  Right
+}
+```
+`Up: 1 / Down: 2 / Left: 3 / Right: 4`<br/>
+숫자형 이넘을 선언할 때 초기 값을 주면 초기 값부터 차례로 1씩 증가한다.<br/>
 
 ```typescript
-enum People { Yumi, Miyoung, Yuri }
-let classPresident: People = People.Yumi;
-// Or
-let classPresident: People = People[0];
+enum Direction {
+  Up, // 0
+  Down, // 1
+  Left, // 2
+  Right // 3
+}
+```
+
+초기 값을 주지 않으면 0부터 차례로 1씩 증가한다.
+
+
+```typescript
+enum Response {
+  No = 0,
+  Yes = 1,
+}
+
+function respond(recipient: string, message: Response): void {
+  // ...
+}
+
+respond("ye-r1", Response.Yes);
 ```
 
 ```typescript
-enum People { Yumi = 2, Miyoung, Yuri }
-let classPresident: People = People[2]; // Yumi
-let classPresident: People = People[4]; // Yuri
+enum Wrong {
+  A = getSomeValue(),
+  B, // Error, 초기화가 필요합니다.
+}
+```
+선언할 때 만약 이넘 값에 다른 이넘 타입의 값을 사용하면, 선언하는 이넘의 첫 번째 값에 초기화를 해줘야 한다.
+
+<br/>
+
+**문자형 이넘**<br/>
+문자형 이넘은 숫자형 이넘과 개념적으로는 `거의 비슷`하다. 다만, `런타임`에서의 미세한 차이가 있다.<br/>
+문자형 이넘은 이넘 값 `전부 다` 특정 `문자` 또는 다른 `이넘 값`으로 `초기화` 해줘야 한다.
+
+```typescript
+enum Direction {
+    Up = "UP",
+    Down = "DOWN",
+    Left = "LEFT",
+    Right = "RIGHT",
+}
 ```
 
-원한다면 인덱스를 `변경`하여 사용할 수도 있다.
+숫자형 이넘과는 다르게 `자동증가 (auto-incrementing)`가 없다.
+
+**복합 이넘**<br/>
+
+```typescript
+enum BooleanLikeHeterogeneousEnum {
+    No = 0,
+    Yes = "YES",
+}
+```
+
+기술적으로 이넘에 문자와 숫자를 혼합하여 생성할 순 있다.<br/>
+하지만 이 방식을 추천하지 않기에 최대한 `같은 타입`으로 이루어진 이넘을 사용한다.
+
 
 <br />
 
