@@ -295,10 +295,6 @@ type Direction = 'left' | 'right' | 'up' | 'down';
 2개 이상의 type을 허용하는 경우 type을 `구분`하는 역할을 한다.<br/>
 모든 가능한 `케이스`중에 발생할 수 있는 `딱 하나`를 담을 때 `union type`을 이용한다.
 
-<br />
-
-#### function
-
 ```typescript
 function find(): number | undefined {
   return name;
@@ -306,6 +302,25 @@ function find(): number | undefined {
 ```
 
 `return` 값이 있으면 number를 리턴하고 찾지 못했으면 `undefined`를 리턴하게 만들 수 있다.
+
+<br />
+
+#### function
+
+```typescript
+function sum(a: number, b: number): number {
+  return a + b;
+}
+```
+
+함수의 선언 방식에서 매개변수와 반환 값에 타입을 추가할 수 있다.<br/>
+
+**함수의 인자**<br/>
+타입스크립트에서는 함수의 인자를 모두 필수 값으로 간주한다.<br/>
+따라서, 함수의 매개변수를 설정하면 undefined나 null이라도 인자로 넘겨야하며, 컴파일러에서 정의된 매개변수 값이 넘어 왔는지 확인한다.
+
+> 즉, 정의된 매개변수 값만 받을 수 있고 추가로 인자를 받을 수 없다.
+
 
 <br />
 
