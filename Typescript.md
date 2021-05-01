@@ -234,7 +234,35 @@ enum BooleanLikeHeterogeneousEnum {
 
 기술적으로 이넘에 문자와 숫자를 혼합하여 생성할 순 있다.<br/>
 하지만 이 방식을 추천하지 않기에 최대한 `같은 타입`으로 이루어진 이넘을 사용한다.
+<br/>
 
+**keyof**<br/>
+
+```typescript
+interface ICountries {
+  KR: '대한민국',
+  US: '미국',
+  CP: '중국'
+}
+let country: keyof ICountries; // 'KR' | 'US' | 'CP'
+country = 'KR'; // ok
+```
+
+인덱싱 가능 타입에서 `keyof`를 사용하면 `속성 이름(key)`을 `타입`으로 사용할 수 있다.<br/>
+인덱싱 가능 타입의 속성 이름들이 `유니온 타입`으로 적용됩니다.
+<br/>
+
+```typescript
+interface ICountries {
+  KR: '대한민국',
+  US: '미국',
+  CP: '중국'
+}
+let country: ICountries[keyof ICountries]; //ICountries['KR' | 'US' | 'CP']
+country = '대한민국'; // ok
+```
+
+또한 `keyof`를 통한 인덱싱으로 `타입의 개별 값`에도 `접근`할 수 있다.
 
 <br />
 
@@ -545,7 +573,7 @@ let notSure: unknown;
 
 <br />
 
-#### Type Alias
+#### 타입 별칭 (Type Alias)
 
 ```typescript
 // 타입 앨리어스
@@ -601,6 +629,27 @@ type Shape = Square | Rectangle | Circle;
 type Tuple = [string, boolean];
 const t: Tuple = ['', '']; // Error
 ```
+
+<br/>
+
+#### 제네릭(Generic)
+`재사용을 목적`으로 함수나 클래스의 `선언 시점`이 아닌, `사용 시점`에 `타입`을 `선언`할 수 있는 방법이다.
+
+```typescript
+function toArray<T>(a: T, b: T): T[] {
+  return [a, b];
+}
+
+toArray<number>(1, 2);
+toArray<string>('1', '2');
+toArray<string | number>(1, '2');
+toArray<number>(1, '2'); // Error
+```
+
+- 함수 이름 우측에 `<T>`를 작성해 시작한다.
+- `T`는 `타입 변수(Type variable)`로 `사용자가 제공한 타입`으로 `변환`될 식별자다.
+- 의도적으로 `Number`와 `String` 타입을 `동시에 받을 수 있다.` (유니언을 사용하지 않으면 에러가 발생한다)
+- 타입 변수는 `매개 변수`처럼 `원하는 이름`으로 `지정`할 수 있다.
 
 
 <br/><br/>
