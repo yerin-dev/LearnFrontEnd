@@ -121,20 +121,6 @@ let array: Array<string | number> = ['Apple', 1, 2, 'Banana'];
 
 <br/>
 
-**readonly**
-
-```javascript
-function printArr(fruits: readonly string[]) {
-}
-```
-
-주어진 함수의 인자를 변경하고 싶지 않을때 `readonly`를 사용하여 타입을 `보장`받을 수 있다.<br/>
-읽을 수만 있기 때문에 데이터를 `조작`한다면 `에러`가 발생한다. `(push, pop)`<br/>
-
-> `readonly`를 사용하는 경우에는 `string[]` 처럼 표기할 수 있지만, `Array<string>`으로 표기할 수 없다.<br/>일관성을 위해 `string[]`과 같은 방식으로 통일하는 것이 좋다.
-
-<br />
-
 #### 5. tuple
 
 ```javascript
@@ -241,49 +227,6 @@ function neverEnd(): never {
 
 <br />
 
-#### interface
-
-```javascript
-interface Todo {
-  id: number;
-  content: string;
-  completed: boolean;
-}
-
-let todo: Todo;
-
-// 설정된 todo는 Todo 인터페이스를 준수하여야 한다.
-todo = { id: 1, content: 'typescript', completed: false };
-```
-
-일반적으로 타입 체크를 위해 사용되며 `변수`, `함수`, `class`에 사용할 수 있다.<br/>
-`여러가지 타입을 갖는 프로퍼티로 이루어진` 새로운 타입을 정의하는 것과 유사하고, 메소드의 `구현을 강제`하여 `일관성`을 `유지`할 수 있도록 하는 것이다.<br/>
-
-```javascript
-interface Todo {
-  id: number;
-  content: string;
-  completed: boolean;
-}
-
-let todos: Todo[] = [];
-
-function addTodo(todo: Todo) {
-  todos = [...todos, todo];
-}
-
-// 설정된 todo는 Todo 인터페이스를 준수하여야 한다.
-const newTodo: Todo = { id: 1, content: 'typescript', completed: false };
-addTodo(newTodo);
-console.log(todos)
-// [ { id: 1, content: 'typescript', completed: false } ]
-```
-
-인터페이스를 사용하여 `함수 파라미터`의 타입을 선언할 수 있다.<br/>
-이때 해당 함수에는 함수 파라미터의 타입으로 지정한 인터페이스를 준수하는 인수를 전달하여야 한다.<br/>
-함수에 객체를 전달할 때 `복잡한 매개변수 체크`가 필요없어서 매우 `유용`하다.
-
-<br />
 
 #### union(|)
 
@@ -314,6 +257,7 @@ function sum(a: number, b: number): number {
 ```
 
 함수의 선언 방식에서 매개변수와 반환 값에 타입을 추가할 수 있다.<br/>
+<br/>
 
 **함수의 인자**<br/>
 타입스크립트에서는 함수의 인자를 모두 필수 값으로 간주한다.<br/>
@@ -321,8 +265,211 @@ function sum(a: number, b: number): number {
 
 > 즉, 정의된 매개변수 값만 받을 수 있고 추가로 인자를 받을 수 없다.
 
+#### this
+
+```typescript
+interface Vue {
+    el: string;
+    count: number;
+    init(this: Vue): () => {};
+}
+
+let vm: Vue = {
+    el: '#app',
+    count: 10,
+    init: function(this: Vue) {
+        return () => {
+            return this.count;
+        }
+    }
+}
+```
+
+타입스크립트에서 자바스크립트의 this가 잘못 사용되었을 때 감지할 수 있다.
+
+```typescript
+class Handler {
+    info: string;
+    onClick(this: void, e: Event) {
+        // `this`의 타입이 void이기 때문에 여기서 `this`를 사용할 수 없다.
+        console.log('clicked!');
+    }
+}
+```
+
+만약 `this`를 사용하지 않는다면, `void` 타입을 선언할 수 있다.
 
 <br />
+
+
+#### interface
+
+인터페이스는 상호 간에 정의한 약속 혹은 규칙을 의미한다.
+
+```typescript
+interface Todo {
+  id: number;
+  content: string;
+  completed: boolean;
+}
+
+let todo: Todo;
+
+// 설정된 todo는 Todo 인터페이스를 준수하여야 한다.
+todo = { id: 1, content: 'typescript', completed: false };
+```
+
+- 일반적으로 타입 체크를 위해 사용되며 `변수`, `함수`, `class`에 사용할 수 있다.
+- `여러가지 타입을 갖는 프로퍼티로 이루어진` 새로운 타입을 정의하는 것과 유사하고, 메소드의 `구현을 강제`하여 `일관성`을 `유지`할 수 있도록 하는 것이다.
+- 인터페이스에 정의된 속성, 타입의 조건만 만족한다면 객체의 속성 `갯수가 일치하지 않더라도` 상관 없다.
+- 인터페이스에 선언된 `속성 순서`를 지키지 않아도 된다.
+
+```typescript
+interface 인터페이스_이름 {
+  속성?: 타입;
+}
+```
+
+옵션(`?`)을 이용하면 필수로 존재하지 않아도 된다. <br />
+
+**readonly**
+
+```typescript
+function printArr(fruits: readonly string[]) {
+}
+
+interface CraftBeer {
+    readonly brand: string;
+}
+```
+
+주어진 함수의 인자를 변경하고 싶지 않을때 `readonly`를 사용하여 타입을 `보장`받을 수 있다.<br/>
+읽을 수만 있기 때문에 데이터를 `조작`한다면 `에러`가 발생한다. `(push, pop)`<br/>
+
+> `readonly`를 사용하는 경우에는 `string[]` 처럼 표기할 수 있지만, `Array<string>`으로 표기할 수 없다.<br/>일관성을 위해 `string[]`과 같은 방식으로 통일하는 것이 좋다.
+
+
+**읽기 전용 배열**
+
+```typescript
+let arr: ReadonlyArray<number> = [1,2];
+```
+배열을 선언할 때 `ReadonlyArray<T>` 타입을 사용하면 `읽기 전용 배열`을 생성할 수 있다.
+
+<br />
+
+**객체 선언의 타입 체크**<br/>
+
+타입스크립트는 인터페이스를 이용하여 객체를 선언할 때 `엄격한 속성 검사`를 진행한다.
+
+```typescript
+interface CraftBeer {
+  brand?: string;
+}
+
+function brewBeer(beer: CraftBeer) {
+  // ..
+}
+brewBeer({ brandon: 'what' });  //error
+```
+위의 코드는 오탈자 점검 에러가 발생된다.
+
+```typescript
+let myBeer = { brandon: 'what' };
+brewBeer(myBeer as CraftBeer);
+```
+
+이런 타입 추론을 무시하고 싶을때 as를 사용하여 타입을 단언한다.
+
+```typescript
+interface CraftBeer {
+  brand?: string;
+  [propName: string]: any;
+}
+```
+
+인터페이스 정의하지 않은 속성들을 추가로 사용하고 싶을 때에 사용한다.
+
+<br/>
+
+**함수타입의 interface**
+
+```typescript
+//함수타입 interface 정의
+interface login {
+  (username: string, password: string): boolean;
+}
+
+//함수의 interface 사용
+let loginUser: login;
+loginUser = function(id: string, pw: string) {
+    console.log('로그인 했습니다');
+    return true;
+}
+```
+
+<br/>
+
+**클래스타입의 interface**
+
+```typescript
+interface CraftBeer {
+  beerName: string;
+  nameBeer(beer: string): void;
+}
+
+class myBeer implements CraftBeer {
+  beerName: string = 'Baby Guinness';
+  nameBeer(b: string) {
+    this.beerName = b;
+  }
+  constructor() {}
+}
+```
+
+**interface 확장**
+
+```typescript
+interface Person {
+  name: string;
+}
+interface Developer extends Person {
+  skill: string;
+}
+let fe = {} as Developer;
+fe.name = 'josh';
+fe.skill = 'TypeScript';
+```
+
+class 확장처럼 interface에도 확장해서 사용할 수 있습니다.
+
+<br/>
+
+**하이브리드 interface**
+
+```typescript
+interface CraftBeer {
+  (beer: string): string;
+  brand: string;
+  brew(): void;
+}
+
+function myBeer(): CraftBeer {
+  let my = (function(beer: string) {}) as CraftBeer;
+  my.brand = 'Beer Kitchen';
+  my.brew = function() {};
+  return my;
+}
+
+let brewedBeer = myBeer();
+brewedBeer('My First Beer');
+brewedBeer.brand = 'Pangyo Craft';
+brewedBeer.brew();
+```
+
+인터페이스에 여러 가지 타입을 조합하여 만들 수 있습니다.
+
+<br/>
 
 #### unknown
 
