@@ -782,6 +782,28 @@ for (let number in code) {
 
 <br/>
 
+**Object.freeze()**
+
+```javascript
+const obj = {
+  prop: 42
+};
+
+Object.freeze(obj);
+
+obj.prop = 33;
+// Throws an error in strict mode
+
+console.log(obj.prop);
+// expected output: 42
+```
+
+- `Object.freeze()` 메서드는 객체를 동결한다.
+- 동결된 객체는 새로운 속성을 `추가`하거나 존재하는 속성을 `제거`하는 것을 방지한다.
+- 동결 객체는 그 프로토타입이 변경되는것도 방지한다. `freeze()`는 전달된 동일한 객체를 반환한다.
+
+<br/>
+
 ### 22. 숫자형
 
 **숫자를 입력하는 다양한 방법**<br/>
@@ -1053,3 +1075,4 @@ https://uwostudy.tistory.com/55<br/>
 https://ithub.tistory.com/223<br/>
 https://www.zerocho.com/category/JavaScript/post/5af6f9e707d77a001bb579d2<br/>
 https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/includes<br/>
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze<br/>
